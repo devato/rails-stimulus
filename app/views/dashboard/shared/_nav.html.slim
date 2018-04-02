@@ -1,0 +1,47 @@
+nav.navbar.px-navbar
+  /! Header
+  .navbar-header
+    = link_to dashboard_root_path, class: 'navbar-logo' do
+      = image_tag 'logo-light.png', class: 'navbar-header__logo'
+      span.navbar-header__text< Relay
+  /! Navbar togglers
+  button.navbar-toggle.collapsed aria-expanded="false" data-target="#px-demo-navbar-collapse" data-toggle="collapse" type="button"
+    i.navbar-toggle-icon
+  /! Collect the nav links, forms, and other content for toggling
+  #px-demo-navbar-collapse.collapse.navbar-collapse
+    ul.nav.navbar-nav
+      li.dropdown
+        a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="" role="button"
+          i.ion-cube>
+          | &nbsp;Projects
+        ul.dropdown-menu
+          li
+            a href="#" No projects
+          li.divider
+          li
+            = link_to '#' do
+              i.fa.fa-plus.m-r-1
+              | Add Project
+    ul.nav.navbar-nav.navbar-right
+      li.dropdown
+        a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+          = image_tag 'avatars/1.jpg', class: 'px-navbar-image'
+          span.hidden-md John Doe
+        ul.dropdown-menu
+          li
+            a href="pages-profile-v2.html"
+              span.label.label-warning.pull-xs-right
+                i.fa.fa-asterisk
+              | Profile
+          li
+            a href="pages-account.html"  Account
+          li
+            a href="pages-messages-list.html"
+              i.dropdown-icon.fa.fa-envelope
+              | &nbsp;&nbsp;Messages
+          li.divider
+          li
+            a href="pages-signin-v1.html"
+              i.dropdown-icon.fa.fa-power-off
+              | &nbsp;&nbsp;Log Out
+

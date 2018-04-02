@@ -1,4 +1,6 @@
-@import 'dashboard/bootstrap.min';
-@import 'dashboard/theme.min';
-@import 'dashboard/widgets.min';
-@import 'dashboard/clean.min';
+@import 'dashboard/vendor/bootstrap.min';
+@import 'dashboard/vendor/theme.min';
+@import 'dashboard/vendor/widgets.min';
+@import 'dashboard/vendor/clean.min';
+
+@import 'dashboard/navbar';

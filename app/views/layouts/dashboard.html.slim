@@ -15,9 +15,10 @@ html
     = javascript_pack_tag 'dashboard'
     = yield(:head)
   body
-    = render 'layouts/dashboard/sidebar'
-    = render 'layouts/dashboard/nav'
-    = yield
+    = render 'dashboard/shared/sidebar'
+    = render 'dashboard/shared/nav'
+    .px-content
+      = yield
     footer.px-footer.px-footer-bottom
       Copyright © 2018 Relay. All rights reserved.
     = yield(:bottom)

@@ -1,0 +1,11 @@
+.navbar-header {
+  padding-top: .8em;
+  &__logo {
+    margin-right: .3em;
+    height: 1.5em;
+  }
+  &__text {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
