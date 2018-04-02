@@ -1,0 +1,13 @@
+{
+  "name": "relay",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^3.4.1",
+    "moment": "^2.22.0",
+    "moment-timezone": "^0.5.14",
+    "stimulus": "^1.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
+}

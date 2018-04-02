@@ -1,0 +1,16 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - db/**
+    - config/**
+    - script/**
+    - spec/**
+    - node_modules/**
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 99
+
+Metrics/BlockLength:
+  Enabled: false
