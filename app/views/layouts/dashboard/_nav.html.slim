@@ -1,0 +1,235 @@
+nav.navbar.px-navbar
+  /! Header
+  .navbar-header
+    a.navbar-brand.px-demo-brand href="index.html"
+      span.px-demo-logo.bg-primary
+        span.px-demo-logo-1
+        span.px-demo-logo-2
+        span.px-demo-logo-3
+        span.px-demo-logo-4
+        span.px-demo-logo-5
+        span.px-demo-logo-6
+        span.px-demo-logo-7
+        span.px-demo-logo-8
+        span.px-demo-logo-9
+      | PixelAdmin
+  /! Navbar togglers
+  button.navbar-toggle.collapsed aria-expanded="false" data-target="#px-demo-navbar-collapse" data-toggle="collapse" type="button"
+    i.navbar-toggle-icon
+  /! Collect the nav links, forms, and other content for toggling
+  #px-demo-navbar-collapse.collapse.navbar-collapse
+    ul.nav.navbar-nav
+      li.dropdown
+        a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="" role="button"  Categories
+        .dropdown-multi-column
+          ul.dropdown-menu.dropdown-column.col-md-4
+            li.dropdown-header Business
+            li
+              a href="#"  Design &amp; Urban Ecologies
+            li
+              a href="#"  Fine Art
+            li
+              a href="#"  Fashion Design
+            li
+              a href="#"  Strategic Design
+          ul.dropdown-menu.dropdown-column.col-md-4
+            li.dropdown-header Liberal Arts
+            li
+              a href="#"  Anthropology
+            li
+              a href="#"  Media Studies
+            li
+              a href="#"  Philosophy
+          ul.dropdown-menu.dropdown-column.col-md-4
+            li.dropdown-header Social Sciences
+            li
+              a href="#"  Food Studies
+            li
+              a href="#"  Journalism
+            li
+              a href="#"  Non Profit Management
+      li.dropdown
+        a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="" role="button"
+          i.fa.fa-bookmark.m-r-1
+          | Links
+        ul.dropdown-menu
+          li.dropdown-toggle
+            a href=""  Products
+            ul.dropdown-menu
+              li
+                a href="#"  All
+              li
+                a href="#"  Popular
+              li
+                a href="#"  Recent
+              li
+                a href="#"  Featured
+              li.divider
+              li
+                a href="#"
+                  i.fa.fa-plus.m-r-1
+                  | Add product
+          li.dropdown-toggle
+            a href=""  Users
+            ul.dropdown-menu
+              li
+                a href="#"  All
+              li
+                a href="#"  Recent
+              li
+                a href="#"  Banned
+              li.divider
+              li
+                a href="#"
+                  i.fa.fa-user-plus.m-r-1
+                  | Create user
+          li.dropdown-toggle
+            a href=""  Blog
+            ul.dropdown-menu
+              li
+                a href="#"  All
+              li
+                a href="#"  Popular
+              li.divider
+              li
+                a href="#"
+                  i.fa.fa-edit.m-r-1
+                  | New blog post
+          li.divider
+          li
+            a href="#"  Overview
+    ul.nav.navbar-nav.navbar-right
+      li.dropdown
+        a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="https://stackoverflow.com" role="button"
+          i.px-navbar-icon.fa.fa-bullhorn.font-size-14
+          span.px-navbar-icon-label Notifications
+          span.px-navbar-label.label.label-success 5
+        .dropdown-menu.p-a-0 style=("width: 300px")
+          #navbar-notifications style=("height: 280px; position: relative;")
+            .widget-notifications-item
+              .widget-notifications-title.text-danger SYSTEM
+              .widget-notifications-description
+                strong Error 500
+                | \: Syntax error in index.php at line
+                strong 461
+              .widget-notifications-date 12h ago
+              .widget-notifications-icon.fa.fa-hdd-o.bg-danger
+            .widget-notifications-item
+              .widget-notifications-title.text-info STORE
+              .widget-notifications-description
+                | You have
+                strong 9
+                | new orders.
+              .widget-notifications-date 12h ago
+              .widget-notifications-icon.fa.fa-truck.bg-info
+            .widget-notifications-item
+              .widget-notifications-title.text-default CRON DAEMON
+              .widget-notifications-description
+                | Job
+                strong "Clean DB"
+                | has been completed.
+              .widget-notifications-date 12h ago
+              .widget-notifications-icon.fa.fa-clock-o.bg-default
+            .widget-notifications-item
+              .widget-notifications-title.text-success SYSTEM
+              .widget-notifications-description
+                | Server
+                strong up
+              .widget-notifications-date 12h ago
+              .widget-notifications-icon.fa.fa-hdd-o.bg-success
+            .widget-notifications-item
+              .widget-notifications-title.text-warning SYSTEM
+              .widget-notifications-description
+                strong> Warning
+                | \: Processor load
+                strong 92%
+              .widget-notifications-date 12h ago
+              .widget-notifications-icon.fa.fa-hdd-o.bg-warning
+          a.widget-more-link href="#"  MORE NOTIFICATIONS
+      li.dropdown
+        a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="https://google.com" role="button"
+          i.px-navbar-icon.fa.fa-envelope.font-size-14
+          span.px-navbar-icon-label Income messages
+          span.px-navbar-label.label.label-danger 8
+        .dropdown-menu.p-a-0 style=("width: 300px;")
+          #navbar-messages style=("height: 280px; position: relative;")
+            .widget-messages-alt-item
+              img.widget-messages-alt-avatar alt="" src="assets/demo/avatars/2.jpg" /
+              a.widget-messages-alt-subject.text-truncate href="#"  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              .widget-messages-alt-description
+                | from
+                a href="#"  Robert Jang
+              .widget-messages-alt-date 2h ago
+            .widget-messages-alt-item
+              img.widget-messages-alt-avatar alt="" src="assets/demo/avatars/3.jpg" /
+              a.widget-messages-alt-subject.text-truncate href="#"  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              .widget-messages-alt-description
+                | from
+                a href="#"  Michelle Bortz
+              .widget-messages-alt-date 2h ago
+            .widget-messages-alt-item
+              img.widget-messages-alt-avatar alt="" src="assets/demo/avatars/4.jpg" /
+              a.widget-messages-alt-subject.text-truncate href="#"  Lorem ipsum dolor sit amet.
+              .widget-messages-alt-description
+                | from
+                a href="#"  Timothy Owens
+              .widget-messages-alt-date 2h ago
+            .widget-messages-alt-item
+              img.widget-messages-alt-avatar alt="" src="assets/demo/avatars/5.jpg" /
+              a.widget-messages-alt-subject.text-truncate href="#"  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              .widget-messages-alt-description
+                | from
+                a href="#"  Denise Steiner
+              .widget-messages-alt-date 2h ago
+            .widget-messages-alt-item
+              img.widget-messages-alt-avatar alt="" src="assets/demo/avatars/2.jpg" /
+              a.widget-messages-alt-subject.text-truncate href="#"  Lorem ipsum dolor sit amet.
+              .widget-messages-alt-description
+                | from
+                a href="#"  Robert Jang
+              .widget-messages-alt-date 2h ago
+            .widget-messages-alt-item
+              img.widget-messages-alt-avatar alt="" src="assets/demo/avatars/3.jpg" /
+              a.widget-messages-alt-subject.text-truncate href="#"  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              .widget-messages-alt-description
+                | from
+                a href="#"  Michelle Bortz
+              .widget-messages-alt-date 2h ago
+            .widget-messages-alt-item
+              img.widget-messages-alt-avatar alt="" src="assets/demo/avatars/4.jpg" /
+              a.widget-messages-alt-subject.text-truncate href="#"  Lorem ipsum dolor sit amet.
+              .widget-messages-alt-description
+                | from
+                a href="#"  Timothy Owens
+              .widget-messages-alt-date 2h ago
+            .widget-messages-alt-item
+              img.widget-messages-alt-avatar alt="" src="assets/demo/avatars/5.jpg" /
+              a.widget-messages-alt-subject.text-truncate href="#"  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              .widget-messages-alt-description
+                | from
+                a href="#"  Denise Steiner
+              .widget-messages-alt-date 2h ago
+          a.widget-more-link href="#"  MORE MESSAGES
+        /! / .dropdown-menu
+      li.dropdown
+        a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+          = image_tag 'avatars/1.jpg', class: 'px-navbar-image'
+          span.hidden-md John Doe
+        ul.dropdown-menu
+          li
+            a href="pages-profile-v2.html"
+              span.label.label-warning.pull-xs-right
+                i.fa.fa-asterisk
+              | Profile
+          li
+            a href="pages-account.html"  Account
+          li
+            a href="pages-messages-list.html"
+              i.dropdown-icon.fa.fa-envelope
+              | &nbsp;&nbsp;Messages
+          li.divider
+          li
+            a href="pages-signin-v1.html"
+              i.dropdown-icon.fa.fa-power-off
+              | &nbsp;&nbsp;Log Out
+

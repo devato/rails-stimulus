@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'dashboard/index#index'
+
+  namespace :dashboard do
+    root 'index#index'
+  end
+
 end

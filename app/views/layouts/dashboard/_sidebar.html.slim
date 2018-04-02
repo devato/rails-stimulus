@@ -1,0 +1,23 @@
+/! Nav
+nav.px-nav.px-nav-left
+  button.px-nav-toggle data-toggle="px-nav" type="button"
+    span.px-nav-toggle-arrow
+    span.navbar-toggle-icon
+    span.px-nav-toggle-label.font-size-11 HIDE MENU
+  ul.px-nav-content
+    li.px-nav-item.active
+      = link_to dashboard_root_path do
+        i.px-nav-icon.ion-home
+        span.px-nav-label Dashboard
+    li.px-nav-item
+      = link_to '#' do
+        i.px-nav-icon.ion-cube
+        span.px-nav-label Projects
+    li.px-nav-item
+      = link_to '#' do
+        i.px-nav-icon.ion-social-buffer
+        span.px-nav-label Issues
+    li.px-nav-item
+      = link_to '#' do
+        i.px-nav-icon.ion-stats-bars
+        span.px-nav-label Statistics
