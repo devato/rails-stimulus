@@ -1,6 +1,4 @@
-class Dashboard::IndexController < ApplicationController
-
-  layout 'dashboard'
+class Dashboard::IndexController < Dashboard::BaseController
 
   def index
   end
