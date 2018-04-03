@@ -3,10 +3,15 @@
     = link_to root_path, class: 'logo' do
       = image_tag asset_pack_path('images/logo-dark.png'), class: 'mr-2 mb-1 img-fluid'
       | Relay
-    h4 Sign in to your account
+    h4 Set up your new account today.
+    p
+      | 30-day money-back guarantee that starts after your first payment.
   .wrapper
     .formy
       form role="form"
+        .form-group
+          label for="name"  Your name
+          input#name.form-control type="text" /
         .form-group
           label for="email"  Email address
           input#email.form-control type="email" /
@@ -16,10 +21,10 @@
         .checkbox
           label
             input type="checkbox" /
-            | Remember me
-        .text-center.mt-4
-          input.submit.btn-block.btn-shadow.btn-shadow-info type="submit" value=("Sign in") /
+            | You have read & agree to the
+            a href="#"  Terms of service
+        .text-center.mt-5
+          input.submit.btn-block.btn-shadow.btn-shadow-info type="submit" value=("Create account") /
   .already-account
-    | Don't have an account?
-    = link_to ' Create one here', new_users_signup_path
-
+    | Already have an account?
+    = link_to ' Sign in here', login_path

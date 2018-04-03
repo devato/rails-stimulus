@@ -1,5 +1,6 @@
-class Users::SignupsController < ApplicationController
-  def index
+class Users::SignupsController < Users::BaseController
+
+  def new
   end
 
   private

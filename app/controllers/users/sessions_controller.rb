@@ -1,4 +1,5 @@
 class Users::SessionsController < Users::BaseController
+
   def new
   end
 
