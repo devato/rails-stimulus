@@ -8,6 +8,5 @@ export default class extends Controller {
   }
 
   render() {
-    console.log('rendered signup controller')
   }
 }

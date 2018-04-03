@@ -5,15 +5,17 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'activemodel-email_address_validator'
+gem 'foreman'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.6'
+gem 'rectify'
 gem 'rubocop'
-gem 'slim-rails'
-gem 'webpacker', github: "rails/webpacker"
-gem 'foreman'
-gem 'sorcery'
 gem 'simple_form'
+gem 'slim-rails'
+gem 'sorcery'
+gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

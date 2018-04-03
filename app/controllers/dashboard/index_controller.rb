@@ -1,6 +1,3 @@
 class Dashboard::IndexController < Dashboard::BaseController
-
-  def index
-  end
-
+  def index; end
 end
