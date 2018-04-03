@@ -4,10 +4,8 @@ html
     title
       | Relay
     = csrf_meta_tags
-
-    = stylesheet_pack_tag 'auth'
-    = javascript_pack_tag 'vendor'
-    = javascript_pack_tag 'auth', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'auth_styles'
+    = javascript_pack_tag 'auth'
     = yield(:head)
   body.session-page
     = yield

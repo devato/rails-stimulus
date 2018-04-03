@@ -1,4 +1,4 @@
-.container
+.container data-controller='auth--signup'
   .header
     = link_to root_path, class: 'logo' do
       = image_tag asset_pack_path('images/logo-dark.png'), class: 'mr-2 mb-1 img-fluid'
@@ -9,22 +9,24 @@
   .wrapper
     .formy
       form role="form"
+      = simple_form_for @user,
+        url: users_signups_path,
+        method: :post,
+        html: { class: 'form-horizontal' } do |f|
         .form-group
-          label for="name"  Your name
-          input#name.form-control type="text" /
+          = f.input :name, input_html: { placeholder: 'Full Name' }
         .form-group
-          label for="email"  Email address
-          input#email.form-control type="email" /
+          = f.input :email, input_html: { placeholder: 'email@example.com' }
         .form-group
-          label for="password"  Password
-          input#password.form-control type="password" /
+          = f.input :password, as: :password
         .checkbox
           label
-            input type="checkbox" /
-            | You have read & agree to the
-            a href="#"  Terms of service
+            = f.check_box :terms
+            |  &nbsp; You have read & agree to the
+            = link_to ' Terms of service', '#'
         .text-center.mt-5
-          input.submit.btn-block.btn-shadow.btn-shadow-info type="submit" value=("Create account") /
+          input.submit.btn-block.btn-shadow.btn-shadow-info type="submit" value="Create account"
+
   .already-account
     | Already have an account?
     = link_to ' Sign in here', login_path

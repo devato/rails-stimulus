@@ -10,7 +10,7 @@ gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.6'
 gem 'rubocop'
 gem 'slim-rails'
-gem 'webpacker'
+gem 'webpacker', github: "rails/webpacker"
 gem 'foreman'
 gem 'sorcery'
 gem 'simple_form'
