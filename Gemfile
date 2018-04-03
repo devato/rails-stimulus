@@ -5,18 +5,17 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'coffee-rails', '~> 4.2'
-gem 'high_voltage', '~> 3.0.0'
+gem 'activemodel-email_address_validator'
+gem 'foreman'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.6'
+gem 'rectify'
 gem 'rubocop'
-gem 'sass-rails', '~> 5.0'
+gem 'simple_form'
 gem 'slim-rails'
-gem 'turbolinks', '~> 5'
-gem 'uglifier', '>= 1.3.0'
-gem 'webpacker'
-gem 'foreman'
+gem 'sorcery'
+gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

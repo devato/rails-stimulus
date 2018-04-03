@@ -1,0 +1,33 @@
+.container data-controller='auth--signup'
+  .header
+    = link_to root_path, class: 'logo' do
+      = image_tag asset_pack_path('images/logo-dark.png'), class: 'mr-2 mb-1 img-fluid'
+      | Relay
+    h4 Set up your new account today.
+    p
+      | 30-day money-back guarantee that starts after your first payment.
+  .wrapper
+    .formy
+      = simple_form_for @signup_form,
+        url: users_signups_path,
+        method: :post,
+        html: { class: 'form-horizontal' } do |f|
+        .form-group
+          = f.input :name, input_html: { placeholder: 'Full Name' }
+        .form-group
+          = f.input :email, input_html: { placeholder: 'email@example.com' }
+        .form-group
+          = f.input :password, as: :password
+        .form-group
+          = f.input :password_confirmation, as: :password
+        .checkbox
+          label
+            = f.check_box :terms
+            |  &nbsp; You have read & agree to the
+            = link_to ' Terms of service', '#'
+        .text-center.mt-5
+          input.submit.btn-block.btn-shadow.btn-shadow-info type="submit" value="Create account"
+
+  .already-account
+    | Already have an account?
+    = link_to ' Sign in here', login_path
