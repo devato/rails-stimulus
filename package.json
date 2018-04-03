@@ -10,6 +10,7 @@
     "moment-timezone": "^0.5.14",
     "popper.js": "^1.14.2",
     "rails-ujs": "^5.1.6",
+    "resolve-url-loader": "^2.3.0",
     "stimulus": "^1.0.1",
     "turbolinks": "^5.1.1"
   },
