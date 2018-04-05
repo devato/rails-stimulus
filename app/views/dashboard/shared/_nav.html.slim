@@ -2,9 +2,9 @@ header#topnav
   .topbar-main
     .container-fluid
       .logo
-        a.logo[href="index.html"]
-          img.logo-small[src="assets/images/logo_sm.png" alt="" height="26"]
-          img.logo-large[src="assets/images/logo.png" alt="" height="26"]
+        = link_to dashboard_root_path do
+          = image_tag asset_pack_path('images/logo_sm.png'), height: '26', class: 'logo-small'
+          = image_tag asset_pack_path('images/logo.png'), height: '26', class: 'logo-large'
       .navbar-custom
         #navigation
           ul.navigation-menu
@@ -214,7 +214,7 @@ header#topnav
                 i.fi-arrow-right
           li.dropdown.notification-list
             a.nav-link.dropdown-toggle.waves-effect.waves-light.nav-user[data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"]
-              img.rounded-circle[src="assets/images/users/avatar-1.jpg" alt="user"]
+              = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle'
               span.ml-1.pro-user-name
                 | Anderson
                 i.mdi.mdi-chevron-down
