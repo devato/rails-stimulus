@@ -4,45 +4,17 @@
 
     .panel.panel-default.panel-fill
       .panel-heading
-        h3.panel-title Organization
+        h3.panel-title Let's get you set up.
       .panel-body
-        p
-          strong Let's get started by creating your organization:
-        p Your organization can be a company or anything else.
-        p
-          | Each organization has their
-          |  own applications which gives you more granular control
-          |  over how your applications are managed.
-        div
-          h5.font-14.mb-3.text-uppercase.m-t-30.m-b-20 Skills
-          .m-b-15
-            h5.font-14
-              | Angular Js
-              span.pull-right 60%
-            .progress
-              .progress-bar.progress-bar-primary aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" style=("width: 60%")
-                span.sr-only 60% Complete
-          .m-b-15
-            h5.font-14
-              | Javascript
-              span.pull-right 90%
-            .progress
-              .progress-bar.progress-bar-primary aria-valuemax="100" aria-valuemin="0" aria-valuenow="90" role="progressbar" style=("width: 90%")
-                span.sr-only 90% Complete
-          .m-b-15
-            h5.font-14
-              | Wordpress
-              span.pull-right 80%
-            .progress
-              .progress-bar.progress-bar-primary aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" style=("width: 80%")
-                span.sr-only 80% Complete
-          .m-b-0
-            h5.font-14
-              | HTML5 &amp; CSS3
-              span.pull-right 95%
-            .progress.m-b-0
-              .progress-bar.progress-bar-primary aria-valuemax="100" aria-valuemin="0" aria-valuenow="95" role="progressbar" style=("width: 95%")
-                span.sr-only 95% Complete
+        .organization-form.row
+          .col
+            = simple_form_for @form,
+              url: :dashboard_onboard_organization,
+              method: :post,
+              html: { class: 'form-horizontal' } do |f|
 
+              = f.input :name, label: false,
+                input_html: { placeholder: 'Organization Name' }
 
-
+              .form-group
+                = f.button :submit, 'Continue', class: 'btn btn-primary'

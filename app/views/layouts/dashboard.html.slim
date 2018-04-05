@@ -11,6 +11,7 @@ html
     = render 'dashboard/shared/nav'
     .wrapper
       .container-fluid
+        = render_flash_messages
         = yield
     = render 'dashboard/shared/footer'
     = yield(:bottom)

@@ -8,10 +8,16 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_one :onboard
+  has_many :user_organizations
+  has_many :organizations, through: :user_organizations
+
+  has_many :user_applications
+  has_many :applications, through: :user_applications
 
   def onboard_complete?
+    return false unless organizations.size > 0 && applications.size > 0
     if onboard.nil?
-      onboard.create!
+      create_onboard!
       false
     else
       onboard.complete?
