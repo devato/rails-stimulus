@@ -1,4 +1,4 @@
-class Onboard::ApplicationForm < Rectify::Form
+class Onboard::ProjectForm < Rectify::Form
 
   attribute :name,  String
   attribute :organization_id, Integer
@@ -10,7 +10,7 @@ class Onboard::ApplicationForm < Rectify::Form
   private
 
   def validate_name_uniqueness
-    return if Application.where(name: name).none?
+    return if Project.where(name: name).none?
     errors.add(:name, 'Already in use')
   end
 

@@ -1,6 +1,6 @@
 class Organization < ApplicationRecord
   has_many :user_organizations
   has_many :users, through: :user_organizations
-  has_many :applications
+  has_many :projects
 
 end

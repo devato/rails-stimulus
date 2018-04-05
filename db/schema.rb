@@ -15,16 +15,6 @@ ActiveRecord::Schema.define(version: 20180405171848) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", force: :cascade do |t|
-    t.string "name"
-    t.bigint "organization_id"
-    t.bigint "supported_language_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["organization_id"], name: "index_applications_on_organization_id"
-    t.index ["supported_language_id"], name: "index_applications_on_supported_language_id"
-  end
-
   create_table "onboards", force: :cascade do |t|
     t.bigint "user_id"
     t.string "state"
@@ -42,17 +32,20 @@ ActiveRecord::Schema.define(version: 20180405171848) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.bigint "organization_id"
+    t.bigint "supported_language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_projects_on_organization_id"
+    t.index ["supported_language_id"], name: "index_projects_on_supported_language_id"
+  end
+
   create_table "supported_languages", force: :cascade do |t|
     t.string "name"
     t.boolean "active"
     t.string "image"
-  end
-
-  create_table "user_applications", id: false, force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "application_id"
-    t.index ["application_id"], name: "index_user_applications_on_application_id"
-    t.index ["user_id"], name: "index_user_applications_on_user_id"
   end
 
   create_table "user_organizations", id: false, force: :cascade do |t|
@@ -60,6 +53,13 @@ ActiveRecord::Schema.define(version: 20180405171848) do
     t.bigint "organization_id"
     t.index ["organization_id"], name: "index_user_organizations_on_organization_id"
     t.index ["user_id"], name: "index_user_organizations_on_user_id"
+  end
+
+  create_table "user_projects", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_user_projects_on_project_id"
+    t.index ["user_id"], name: "index_user_projects_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,11 +73,11 @@ ActiveRecord::Schema.define(version: 20180405171848) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "applications", "organizations"
-  add_foreign_key "applications", "supported_languages"
   add_foreign_key "onboards", "users"
-  add_foreign_key "user_applications", "applications"
-  add_foreign_key "user_applications", "users"
+  add_foreign_key "projects", "organizations"
+  add_foreign_key "projects", "supported_languages"
   add_foreign_key "user_organizations", "organizations"
   add_foreign_key "user_organizations", "users"
+  add_foreign_key "user_projects", "projects"
+  add_foreign_key "user_projects", "users"
 end

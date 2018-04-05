@@ -1,4 +1,4 @@
-class Onboard::ApplicationPresenter < Rectify::Presenter
+class Onboard::ProjectPresenter < Rectify::Presenter
   attribute :user, User
 
   def organization

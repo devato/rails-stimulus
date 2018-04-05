@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     root 'index#index'
     match 'organization' => 'onboard#organization', as: :onboard_organization, via: [:get, :post]
-    match 'application' => 'onboard#application', as: :onboard_application, via: [:get, :post]
-    match 'invitation' => 'onboard#invitation', as: :onboard_invitation, via: [:get, :post]
+    match 'project' => 'onboard#project', as: :onboard_project, via: [:get, :post]
   end
 
 end

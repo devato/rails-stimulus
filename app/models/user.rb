@@ -11,11 +11,11 @@ class User < ApplicationRecord
   has_many :user_organizations
   has_many :organizations, through: :user_organizations
 
-  has_many :user_applications
-  has_many :applications, through: :user_applications
+  has_many :user_projects
+  has_many :projects, through: :user_projects
 
   def onboard_complete?
-    return false unless organizations.size > 0 && applications.size > 0
+    return false unless organizations.size > 0 && projects.size > 0
     if onboard.nil?
       create_onboard!
       false
