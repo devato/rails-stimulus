@@ -6,129 +6,130 @@ header#topnav
           .logo__img
             = image_tag asset_pack_path('images/logo-light.png'), height: '26', class: 'logo-large'
           .logo__text Relay
-      .navbar-custom
-        #navigation
-          ul.navigation-menu
-            li.has-submenu
-              = link_to dashboard_root_path do
-                span
-                  i.ti-home
-                span
-                  |  Dashboard
-            li.has-submenu
-              a[href="#"]
-                span
-                  i.ti-files
-                span
-                  |  Pages
-              ul.submenu
-                li
-                  a[href="pages-login.html"]
-                    | Login
-                li
-                  a[href="pages-register.html"]
-                    | Register
-                li
-                  a[href="pages-forget-password.html"]
-                    | Forget Password
-                li
-                  a[href="pages-lock-screen.html"]
-                    | Lock-screen
-                li
-                  a[href="pages-blank.html"]
-                    | Blank page
-                li
-                  a[href="pages-404.html"]
-                    | Error 404
-                li
-                  a[href="pages-confirm-mail.html"]
-                    | Confirm Mail
-                li
-                  a[href="pages-session-expired.html"]
-                    | Session Expired
-            li.has-submenu
-              a[href="#"]
-                span
-                  i.ti-spray
-                span
-                  |  Other
-              ul.submenu
-                li
-                  a[href="ui-elements.html"]
-                    | UI Elements
-                li.has-submenu
-                  a[href="#"]
-                    | Components
-                  ul.submenu
-                    li
-                      a[href="components-range-slider.html"]
-                        | Range Slider
-                    li
-                      a[href="components-alerts.html"]
-                        | Alerts
-                    li
-                      a[href="components-icons.html"]
-                        | Icons
-                    li
-                      a[href="components-widgets.html"]
-                        | Widgets
-                li
-                  a[href="typography.html"]
-                    |  Typography
-                li.has-submenu
-                  a[href="#"]
-                    |  Forms
-                  ul.submenu
-                    li
-                      a[href="forms-general.html"]
-                        | General Elements
-                    li
-                      a[href="forms-advanced.html"]
-                        | Advanced Form
-                li.has-submenu
-                  a[href="#"]
-                    |  Tables
-                  ul.submenu
-                    li
-                      a[href="tables-basic.html"]
-                        | Basic tables
-                    li
-                      a[href="tables-advanced.html"]
-                        | Advanced tables
-                li
-                  a[href="charts.html"]
-                    |  Charts
-                li
-                  a[href="maps.html"]
-                    |  Maps
-            li.has-submenu
-              a[href="#"]
-                span
-                  i.ti-widget
-                span
-                  |  Extra Pages
-              ul.submenu
-                li
-                  a[href="extras-timeline.html"]
-                    | Timeline
-                li
-                  a[href="extras-invoice.html"]
-                    | Invoice
-                li
-                  a[href="extras-profile.html"]
-                    | Profile
-                li
-                  a[href="extras-calendar.html"]
-                    | Calendar
-                li
-                  a[href="extras-faqs.html"]
-                    | FAQs
-                li
-                  a[href="extras-pricing.html"]
-                    | Pricing
-                li
-                  a[href="extras-contacts.html"]
-                    | Contacts
+      - unless @onboarding
+        .navbar-custom
+          #navigation
+            ul.navigation-menu
+              li.has-submenu
+                = link_to dashboard_root_path do
+                  span
+                    i.ti-home
+                  span
+                    |  Dashboard
+              li.has-submenu
+                a[href="#"]
+                  span
+                    i.ti-files
+                  span
+                    |  Pages
+                ul.submenu
+                  li
+                    a[href="pages-login.html"]
+                      | Login
+                  li
+                    a[href="pages-register.html"]
+                      | Register
+                  li
+                    a[href="pages-forget-password.html"]
+                      | Forget Password
+                  li
+                    a[href="pages-lock-screen.html"]
+                      | Lock-screen
+                  li
+                    a[href="pages-blank.html"]
+                      | Blank page
+                  li
+                    a[href="pages-404.html"]
+                      | Error 404
+                  li
+                    a[href="pages-confirm-mail.html"]
+                      | Confirm Mail
+                  li
+                    a[href="pages-session-expired.html"]
+                      | Session Expired
+              li.has-submenu
+                a[href="#"]
+                  span
+                    i.ti-spray
+                  span
+                    |  Other
+                ul.submenu
+                  li
+                    a[href="ui-elements.html"]
+                      | UI Elements
+                  li.has-submenu
+                    a[href="#"]
+                      | Components
+                    ul.submenu
+                      li
+                        a[href="components-range-slider.html"]
+                          | Range Slider
+                      li
+                        a[href="components-alerts.html"]
+                          | Alerts
+                      li
+                        a[href="components-icons.html"]
+                          | Icons
+                      li
+                        a[href="components-widgets.html"]
+                          | Widgets
+                  li
+                    a[href="typography.html"]
+                      |  Typography
+                  li.has-submenu
+                    a[href="#"]
+                      |  Forms
+                    ul.submenu
+                      li
+                        a[href="forms-general.html"]
+                          | General Elements
+                      li
+                        a[href="forms-advanced.html"]
+                          | Advanced Form
+                  li.has-submenu
+                    a[href="#"]
+                      |  Tables
+                    ul.submenu
+                      li
+                        a[href="tables-basic.html"]
+                          | Basic tables
+                      li
+                        a[href="tables-advanced.html"]
+                          | Advanced tables
+                  li
+                    a[href="charts.html"]
+                      |  Charts
+                  li
+                    a[href="maps.html"]
+                      |  Maps
+              li.has-submenu
+                a[href="#"]
+                  span
+                    i.ti-widget
+                  span
+                    |  Extra Pages
+                ul.submenu
+                  li
+                    a[href="extras-timeline.html"]
+                      | Timeline
+                  li
+                    a[href="extras-invoice.html"]
+                      | Invoice
+                  li
+                    a[href="extras-profile.html"]
+                      | Profile
+                  li
+                    a[href="extras-calendar.html"]
+                      | Calendar
+                  li
+                    a[href="extras-faqs.html"]
+                      | FAQs
+                  li
+                    a[href="extras-pricing.html"]
+                      | Pricing
+                  li
+                    a[href="extras-contacts.html"]
+                      | Contacts
       .menu-extras.topbar-custom
         ul.list-unstyled.topbar-right-menu.float-right.mb-0
           li.menu-item

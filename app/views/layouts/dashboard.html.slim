@@ -9,5 +9,8 @@ html
     = yield(:head)
   body
     = render 'dashboard/shared/nav'
-    = yield
+    .wrapper
+      .container-fluid
+        = yield
+    = render 'dashboard/shared/footer'
     = yield(:bottom)
