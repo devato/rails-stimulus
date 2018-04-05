@@ -1,4 +1,4 @@
-class Onboard::CreateApplication < Rectify::Command
+class Onboard::CreateProject < Rectify::Command
 
   def initialize(form)
     @form = form
@@ -8,8 +8,8 @@ class Onboard::CreateApplication < Rectify::Command
     return broadcast(:invalid) if form.invalid?
 
     transaction do
-      create_application
-      connect_application_data
+      create_project
+      connect_project_data
       set_onboard_state
       notify_admins
       audit_event
@@ -21,18 +21,18 @@ class Onboard::CreateApplication < Rectify::Command
 
   private
 
-  attr_reader :form, :application
+  attr_reader :form, :project
 
-  def create_application
-    @application = Application.create do |app|
+  def create_project
+    @project = Project.create do |app|
       app.name = form.name
       app.supported_language_id = form.supported_language_id
       app.organization_id = form.organization_id
     end
   end
 
-  def connect_application_data
-    current_user.applications << application
+  def connect_project_data
+    current_user.projects << project
   end
 
   def set_onboard_state

@@ -9,11 +9,15 @@ Rails.application.routes.draw do
   get 'login' => 'users/sessions#new', as: :login
   post 'logout' => 'users/sessions#destroy', as: :logout
 
-  namespace :dashboard do
-    root 'index#index'
-    match 'organization' => 'onboard#organization', as: :onboard_organization, via: [:get, :post]
-    match 'application' => 'onboard#application', as: :onboard_application, via: [:get, :post]
-    match 'invitation' => 'onboard#invitation', as: :onboard_invitation, via: [:get, :post]
+  match '/onboard/organization' => 'dashboard/onboard#organization', as: :onboard_organization, via: [:get, :post]
+  match '/onbaord/project' => 'dashboard/onboard#project', as: :onboard_project, via: [:get, :post]
+
+  scope '/:organization_id', as: :organization do
+    scope module: :dashboard do
+      root 'index#index'
+      # match 'organization' => 'onboard#organization', as: :onboard_organization, via: [:get, :post]
+      # match 'project' => 'onboard#project', as: :onboard_project, via: [:get, :post]
+    end
   end
 
 end

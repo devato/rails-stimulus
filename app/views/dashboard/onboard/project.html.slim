@@ -1,19 +1,19 @@
 .row
   .col-sm-8.offset-sm-2
-    h4.header-title.m-t-0.m-b-20 Create Application
+    h4.header-title.m-t-0.m-b-20 Create Project
 
     .panel.panel-default.panel-fill
       .panel-heading
-        h3.panel-title New Application for #{presenter.organization}
+        h3.panel-title New Project for #{presenter.organization}
       .panel-body
-        p Events are scoped to a specific application in your organization. For example, you might have separate projects your API server and frontend client.
+        p Events are scoped to a specific project in your organization. For example, you might have separate projects your API server and frontend client.
 
 
         hr/
         .organization-form.row
           .col
             = simple_form_for @form,
-              url: :dashboard_onboard_application,
+              url: :onboard_project,
               method: :post,
               html: { class: 'form-horizontal' } do |f|
 
@@ -26,7 +26,7 @@
                 input_html: { value: presenter.organization_id }
 
               = f.input :name, label: false,
-                input_html: { placeholder: 'Application Name' }
+                input_html: { placeholder: 'Project Name' }
 
               .form-group
                 = f.button :submit, 'Continue', class: 'btn btn-primary'
