@@ -8,4 +8,14 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_one :onboard
+
+  def onboard_complete?
+    if onboard.nil?
+      onboard.create!
+      false
+    else
+      onboard.complete?
+    end
+  end
+
 end
