@@ -4,13 +4,14 @@ html
     title
       | Relay
     = csrf_meta_tags
+    = stylesheet_pack_tag 'dashboard_styles'
     = javascript_pack_tag 'dashboard'
     = yield(:head)
   body
-    = render 'dashboard/shared/sidebar'
     = render 'dashboard/shared/nav'
-    .px-content
-      = yield
-    footer.px-footer.px-footer-bottom
-      Copyright © 2018 Relay. All rights reserved.
+    .wrapper
+      .container-fluid
+        = render_flash_messages
+        = yield
+    = render 'dashboard/shared/footer'
     = yield(:bottom)

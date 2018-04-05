@@ -11,6 +11,7 @@ module Users
 
       transaction do
         create_user
+        create_onboard
         login_user
         notify_admins
         audit_event
@@ -32,6 +33,10 @@ module Users
         password_confirmation: @form.password_confirmation,
         terms: @form.terms
       })
+    end
+
+    def create_onboard
+      Onboard.create!(user: @user)
     end
 
     def login_user

@@ -1,0 +1,23 @@
+.row
+  .col-sm-12
+    - if @supported_languages.present?
+      - @supported_languages.each do |lang|
+        .radio.radio-primary
+          = form.radio_button :supported_language_id, lang.id
+          label
+            span.radio__img
+              = image_tag asset_pack_path("images/lang-icons/#{lang.image}"), width: '20px'
+            span.radio__text
+              |  &nbsp;
+              = lang.name
+      - if @form&.errors[:supported_language_id]
+        .has-error
+          span.help-block Please select a language or framework
+
+    - else
+      .alert.alert-danger.alert-dismissible.fade.show role="alert"
+        button.close aria-label="Close" data-dismiss="alert" type="button"
+          span aria-hidden="true"  ×
+        strong Warning!
+        | There are no supported languages configured.
+

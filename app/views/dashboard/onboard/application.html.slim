@@ -1,0 +1,32 @@
+.row
+  .col-sm-8.offset-sm-2
+    h4.header-title.m-t-0.m-b-20 Create Application
+
+    .panel.panel-default.panel-fill
+      .panel-heading
+        h3.panel-title New Application for #{presenter.organization}
+      .panel-body
+        p Events are scoped to a specific application in your organization. For example, you might have separate projects your API server and frontend client.
+
+
+        hr/
+        .organization-form.row
+          .col
+            = simple_form_for @form,
+              url: :dashboard_onboard_application,
+              method: :post,
+              html: { class: 'form-horizontal' } do |f|
+
+              p
+                strong Choose a language or framework:
+              br/
+              = render 'language_select', form: f
+
+              = f.input :organization_id, as: :hidden,
+                input_html: { value: presenter.organization_id }
+
+              = f.input :name, label: false,
+                input_html: { placeholder: 'Application Name' }
+
+              .form-group
+                = f.button :submit, 'Continue', class: 'btn btn-primary'
