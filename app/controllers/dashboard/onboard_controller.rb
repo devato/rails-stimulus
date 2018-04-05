@@ -7,14 +7,14 @@ class Dashboard::OnboardController < Dashboard::BaseController
 
   def organization
     if request.get?
-      redirect_to :dashboard_onboard_application if current_user.onboard.has_organization?
+      redirect_to :onboard_project if current_user.organizations.size > 0
       @form = Onboard::OrganizationForm.new
     elsif request.post?
       @form = Onboard::OrganizationForm.from_params(params)
       Onboard::CreateOrganization.call(@form) do
         on(:ok) do
           flash[:notice] = 'Successfully created organization'
-          redirect_back_or_to :dashboard_onboard_project
+          redirect_back_or_to :onboard_project
         end
         on(:invalid) { render :organization }
       end
@@ -26,14 +26,15 @@ class Dashboard::OnboardController < Dashboard::BaseController
     present Onboard::ProjectPresenter.new(user: current_user)
 
     if request.get?
-      redirect_to :dashboard_root if current_user.onboard.complete?
+      redirect_to organization_root_path(presenter.organization_slug) if current_user.onboard.complete?
+      redirect_to :onboard_organization if current_user.organizations.size == 0
       @form = Onboard::ProjectForm.new
     elsif request.post?
       @form = Onboard::ProjectForm.from_params(params)
       Onboard::CreateProject.call(@form) do
         on(:ok) do
           flash[:notice] = 'Successfully created application'
-          redirect_back_or_to :dashboard_root
+          redirect_back_or_to organization_root_path(presenter.organization_slug)
         end
         on(:invalid) { render :project }
       end

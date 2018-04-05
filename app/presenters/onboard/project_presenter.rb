@@ -9,4 +9,8 @@ class Onboard::ProjectPresenter < Rectify::Presenter
     user.organizations.first.id
   end
 
+  def organization_slug
+    user.organizations.first.slug
+  end
+
 end

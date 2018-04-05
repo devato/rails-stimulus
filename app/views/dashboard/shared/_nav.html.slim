@@ -2,7 +2,7 @@ header#topnav
   .topbar-main
     .container-fluid
       .logo
-        = link_to dashboard_root_path do
+        = link_to organization_root_path('test') do
           .logo__img
             = image_tag asset_pack_path('images/logo-light.png'), height: '26', class: 'logo-large'
           .logo__text Relay
@@ -11,7 +11,7 @@ header#topnav
           #navigation
             ul.navigation-menu
               li.has-submenu
-                = link_to dashboard_root_path do
+                = link_to organization_root_path('test') do
                   span
                     i.ti-home
               li.has-submenu
@@ -48,13 +48,19 @@ header#topnav
               span
               span
               span
-          li.dropdown.notification-list.hide-phone
-            a.nav-link.dropdown-toggle.waves-effect.waves-light.nav-user[data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"]
-              |  Test Org
-              i.mdi.mdi-chevron-down
-            .dropdown-menu.dropdown-menu-right
-              a.dropdown-item[href="javascript:void(0);"]
-                |  Other Org
+          - unless @onboarding
+            li.dropdown.hide-phone
+              a.nav-link.dropdown-toggle.waves-effect.waves-light.nav-user[data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"]
+                = @organization.name
+                i.mdi.mdi-chevron-down
+                .dropdown-menu.dropdown-menu-right
+                  - if @other_organizations.size > 0
+                    - @other_organizations.each do |org|
+                        = link_to org.name, organization_root_path(org.slug),
+                          class: 'dropdown-item'
+                  = link_to organization_root_path(session[:organization]),
+                    class: 'dropdown-item' do
+                     | Create Organization
           li.dropdown
             a.nav-link.dropdown-toggle.waves-effect.waves-light.nav-user[data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"]
               = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle'

@@ -9,6 +9,7 @@ class Onboard::CreateOrganization < Rectify::Command
 
     transaction do
       create_organization
+      set_current_organization_session
       connect_user_to_organization
       set_onboard_state
       notify_admins
@@ -26,7 +27,12 @@ class Onboard::CreateOrganization < Rectify::Command
   def create_organization
     @organization = Organization.create do |org|
       org.name = form.name
+      org.default = current_user.organizations.size == 0
     end
+  end
+
+  def set_current_organization_session
+    session[:organization] = organization.slug
   end
 
   def connect_user_to_organization
