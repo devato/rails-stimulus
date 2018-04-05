@@ -6,17 +6,19 @@
     h4 Sign in to your account
   .wrapper
     .formy
-      form role="form"
+      = render_flash_messages
+      = simple_form_for @form,
+        url: users_sessions_path,
+        method: :post,
+        html: { class: 'form-horizontal' } do |f|
         .form-group
-          label for="email"  Email address
-          input#email.form-control type="email" /
+          = f.input :email, input_html: { placeholder: 'email@example.com' }
         .form-group
-          label for="password"  Password
-          input#password.form-control type="password" /
+          = f.input :password, as: :password
         .checkbox
           label
-            input type="checkbox" /
-            | Remember me
+            input type="checkbox"
+            |  Remember me
         .text-center.mt-4
           input.submit.btn-block.btn-shadow.btn-shadow-info type="submit" value=("Sign in") /
   .already-account

@@ -20,6 +20,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.12.2)
+      concurrent-ruby (~> 1.0)
     actioncable (5.1.6)
       actionpack (= 5.1.6)
       nio4r (~> 2.0)
@@ -72,6 +74,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
     crass (1.0.3)
     database_cleaner (1.6.2)
     descendants_tracker (0.0.4)
@@ -87,6 +90,8 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
+    flash_rails_messages (0.1.4)
+      rails (>= 4.0)
     foreman (0.64.0)
       dotenv (~> 0.7.0)
       thor (>= 0.13.6)
@@ -129,6 +134,8 @@ GEM
     powerpack (0.1.1)
     puma (3.11.3)
     rack (2.0.4)
+    rack-protection (2.0.1)
+      rack
     rack-proxy (0.6.4)
       rack
     rack-test (1.0.0)
@@ -167,6 +174,7 @@ GEM
       activesupport (>= 4.1.0)
       virtus (~> 1.0.5)
       wisper (>= 1.6.1)
+    redis (4.0.1)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -193,6 +201,11 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
+    sidekiq (5.1.1)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     simple_form (3.5.1)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -240,11 +253,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   activemodel-email_address_validator
   byebug
   database_cleaner
   dotenv-rails
   factory_bot
+  flash_rails_messages
   foreman
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
@@ -253,6 +268,7 @@ DEPENDENCIES
   rectify
   rspec-rails (~> 3.7)
   rubocop
+  sidekiq
   simple_form
   slim-rails
   sorcery

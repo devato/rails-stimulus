@@ -8,6 +8,7 @@
       | 30-day money-back guarantee that starts after your first payment.
   .wrapper
     .formy
+      = render_flash_messages
       = simple_form_for @signup_form,
         url: users_signups_path,
         method: :post,

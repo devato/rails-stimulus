@@ -3,13 +3,14 @@ header#topnav
     .container-fluid
       .logo
         = link_to dashboard_root_path do
-          = image_tag asset_pack_path('images/logo_sm.png'), height: '26', class: 'logo-small'
-          = image_tag asset_pack_path('images/logo.png'), height: '26', class: 'logo-large'
+          .logo__img
+            = image_tag asset_pack_path('images/logo-light.png'), height: '26', class: 'logo-large'
+          .logo__text Relay
       .navbar-custom
         #navigation
           ul.navigation-menu
             li.has-submenu
-              a[href="index.html"]
+              = link_to dashboard_root_path do
                 span
                   i.ti-home
                 span
@@ -234,7 +235,7 @@ header#topnav
                 i.ti-lock
                 span
                   | Lock Screen
-              a.dropdown-item.notify-item[href="javascript:void(0);"]
+              = link_to :logout, method: :post, class: 'dropdown-item notify-item' do
                 i.ti-power-off
                 span
                   | Logout

@@ -1,6 +1,6 @@
 module Users
 
-  class CreateAccount < Rectify::Command
+  class Login < Rectify::Command
 
     def initialize(form)
       @form = form
@@ -8,11 +8,9 @@ module Users
 
     def call
       return broadcast(:invalid) if form.invalid?
+      return broadcast(:not_found) unless login_user
 
       transaction do
-        create_user
-        create_onboard
-        login_user
         notify_admins
         audit_event
         send_user_details_to_crm
@@ -24,20 +22,6 @@ module Users
     private
 
     attr_reader :form
-
-    def create_user
-      @user = User.create!({
-        name: @form.name,
-        email: @form.email,
-        password: @form.password,
-        password_confirmation: @form.password_confirmation,
-        terms: @form.terms
-      })
-    end
-
-    def create_onboard
-      Onboard.create!(user: @user)
-    end
 
     def login_user
       @user = login(@form.email, @form.password)
