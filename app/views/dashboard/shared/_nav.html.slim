@@ -16,16 +16,18 @@ header#topnav
                     i.ti-home
               li.has-submenu
                 a[href="#"]
-                  span
-                    | Projects
+                  span Projects
+                  i.mdi.mdi-chevron-down
                 ul.submenu
-                  li
-                    a[href="ui-elements.html"]
-                      | Project 1
+                  - if current_user.projects.size > 0
+                    - current_user.projects.each do |p|
+                      li = link_to p.name, '#'
+                  - else
+                    li No projects
                   li.divider
                   li
-                    a[href="typography.html"]
-                      |  New Project
+                    = link_to '#' do
+                      |  Create Project
               li.has-submenu
                 a[href="#"]
                   span

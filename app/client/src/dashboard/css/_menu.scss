@@ -22,19 +22,25 @@
   border: 0;
   background: $bg-topbar;
 
-  .has-submenu.active {
-    a{
-      color: $white;
-
-      i {
+  .has-submenu {
+    .active {
+      a{
         color: $white;
+
+        i {
+          color: $white;
+        }
+      }
+      .submenu {
+        li.active > a{
+          color: $custom;
+        }
       }
     }
-
-
     .submenu {
-      li.active > a{
-        color: $custom;
+      li.divider {
+        margin: .5em;
+        border-bottom: 1px solid #eff0f1;
       }
     }
   }
@@ -259,6 +265,7 @@
       margin-left: 0;
       margin-right: 10px;
     }
+
 
     //.navigation-menu > li {
     //  &:first-of-type {
