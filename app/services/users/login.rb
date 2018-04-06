@@ -25,6 +25,7 @@ module Users
 
     def login_user
       @user = login(@form.email, @form.password)
+      Current.user = @user
     end
 
     def notify_admins

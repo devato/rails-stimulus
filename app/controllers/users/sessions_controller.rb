@@ -12,7 +12,7 @@ class Users::SessionsController < Users::BaseController
   def create
     @form = Users::LoginForm.from_params(params)
     Users::Login.call(@form) do
-      on(:ok)      { redirect_back_or_to dashboard_root_path }
+      on(:ok)      { redirect_back_or_to root_path }
       on(:invalid) { render :new }
       on(:not_found) do
         flash[:alert] = 'Username or password invalid'
