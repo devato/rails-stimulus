@@ -1,6 +1,5 @@
 class Onboard::ProjectForm < Rectify::Form
-
-  attribute :name,  String
+  attribute :name, String
   attribute :organization_id, Integer
   attribute :supported_language_id, Integer
 
@@ -13,5 +12,4 @@ class Onboard::ProjectForm < Rectify::Form
     return if Project.where(name: name).none?
     errors.add(:name, 'Already in use')
   end
-
 end

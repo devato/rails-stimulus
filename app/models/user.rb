@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :projects, through: :user_projects
 
   def onboard_complete?
-    return false unless organizations.size > 0 && projects.size > 0
+    return false unless !organizations.empty? && !projects.empty?
     if onboard.nil?
       create_onboard!
       false
@@ -23,5 +23,4 @@ class User < ApplicationRecord
       onboard.complete?
     end
   end
-
 end

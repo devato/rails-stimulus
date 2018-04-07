@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  belongs_to :organization
+  multi_tenant :organization
   belongs_to :supported_language
 
   has_many :user_projects

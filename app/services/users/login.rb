@@ -1,7 +1,5 @@
 module Users
-
   class Login < Rectify::Command
-
     def initialize(form)
       @form = form
     end

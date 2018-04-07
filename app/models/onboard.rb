@@ -15,7 +15,5 @@ class Onboard < ApplicationRecord
     event :finish do
       transitions to: :complete
     end
-
   end
-
 end

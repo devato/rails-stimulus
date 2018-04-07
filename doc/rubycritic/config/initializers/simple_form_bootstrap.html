@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ruby Critic - Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- StyleSheets -->
+    <link href="../../assets/stylesheets/bootstrap.min.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../../assets/stylesheets/font-awesome.min.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../../assets/stylesheets/prettify.custom_theme.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../../assets/stylesheets/application.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <header class="navbar navbar-default navbar-fixed-top">
+      <a href="#menu-toggle" class="btn btn-default hidden-lg visible-sm-* hidden-md visible-xs-* pull-left" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+      <a href="../../overview.html"><img src="../../assets/images/logo.png" title="Ruby Critic Logo" width="55"><span class="logo">RUBYCRITIC</span></a>
+    </header>
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <aside id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-item">
+            <a href="../../overview.html" class="project-nav-item overview-nav"><i class="fa fa-dashboard"></i>Overview</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../../code_index.html" class="project-nav-item code-index-nav"><i class="fa fa-code"></i>Code</a>
+          </li>
+          <li class="sidebar-item">
+            <a href="../../smells_index.html" class="project-nav-item smells-index-nav"><i class="fa fa-warning"></i>Smells</a>
+          </li>
+        </ul>
+      </aside>
+      <!-- /#sidebar-wrapper -->
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+  <!--Page Title -->
+  <div class="Page_Title">
+    <div class="file-time">
+      <span class="committed-at">
+        
+          Updated <time class='js-timeago' datetime='2018-04-03 14:31:36 -0400'>2018-04-03 14:31:36 -0400</time>
+        
+      </span>
+    </div>
+    <div>
+      <h3><small>config/initializers /</small> simple_form_bootstrap.rb</h3>
+    </div>
+  </div>
+  <!--End Page Title -->
+  <div class="Content_Wrapper">
+    <!-- code detail -->
+    <div class="code-top-detail clearfix row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-1">
+            <div class="rating d big">
+              D
+            </div>
+          </div>
+          <div class="code-statistics col-md-11">
+            <div class="col-md-3">
+              <div><span class="metric">156</span><small> lines of codes</small></div>
+              <div><span class="metric">0</span><small> methods</small></div>
+            </div>
+            <div class="col-md-3">
+              <div><span class="metric">N/A</span><small> complexity/method</small></div>
+              <div><span class="metric">2</span><small> churn</small></div>
+            </div>
+            <div class="col-md-3">
+              <div><span class="metric">0.0</span><small> complexity</small></div>
+              <div><span class="metric">270</span><small> duplications</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="code-tabs">
+          <ul class="nav nav-pills right-to-left">
+            <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
+            <li class="active">
+              <a href="#" id="toggle-smells" class="toggle-button button">
+                3
+                smells
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <code class="prettyprint linenums lang-ruby file-code js-file-code"># frozen_string_literal: true
+
+# Use this setup block to configure all options available in SimpleForm.
+SimpleForm.setup do |config|
+  config.error_notification_class = &#39;alert alert-danger&#39;
+  config.button_class = &#39;btn btn-default&#39;
+  config.boolean_label_class = nil
+
+  config.wrappers :vertical_form, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="simple_form_bootstrap.html#L9" class="js-smell-location">0</a>                  <a href="simple_form_bootstrap.html#L117" class="js-smell-location">1</a>                  </div>  </li></ol>
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: &#39;control-label&#39;
+
+    b.use :input, class: &#39;form-control&#39;
+    b.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+    b.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+  end
+
+  config.wrappers :vertical_file_input, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :readonly
+    b.use :label, class: &#39;control-label&#39;
+
+    b.use :input
+    b.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+    b.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+  end
+
+  config.wrappers :vertical_boolean, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|
+    b.use :html5
+    b.optional :readonly
+
+    b.wrapper tag: &#39;div&#39;, class: &#39;checkbox&#39; do |ba|
+      ba.use :label_input
+    end
+
+    b.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+    b.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+  end
+
+  config.wrappers :vertical_radio_and_checkboxes, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|
+    b.use :html5
+    b.optional :readonly
+    b.use :label, class: &#39;control-label&#39;
+    b.use :input
+    b.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+    b.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+  end
+
+  config.wrappers :horizontal_form, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: &#39;col-sm-3 control-label&#39;
+
+    b.wrapper tag: &#39;div&#39;, class: &#39;col-sm-9&#39; do |ba|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="simple_form_bootstrap.html#L68" class="js-smell-location">0</a>                  <a href="simple_form_bootstrap.html#L136" class="js-smell-location">1</a>                  </div>  </li></ol>
+      ba.use :input, class: &#39;form-control&#39;
+      ba.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+      ba.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+    end
+  end
+
+  config.wrappers :horizontal_file_input, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :readonly
+    b.use :label, class: &#39;col-sm-3 control-label&#39;
+
+    b.wrapper tag: &#39;div&#39;, class: &#39;col-sm-9&#39; do |ba|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Identical code found in 2 nodes</span>              <span>Locations:</span>                  <a href="simple_form_bootstrap.html#L83" class="js-smell-location">0</a>                  <a href="simple_form_bootstrap.html#L110" class="js-smell-location">1</a>                  </div>  </li></ol>
+      ba.use :input
+      ba.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+      ba.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+    end
+  end
+
+  config.wrappers :horizontal_boolean, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|
+    b.use :html5
+    b.optional :readonly
+
+    b.wrapper tag: &#39;div&#39;, class: &#39;col-sm-offset-3 col-sm-9&#39; do |wr|
+      wr.wrapper tag: &#39;div&#39;, class: &#39;checkbox&#39; do |ba|
+        ba.use :label_input
+      end
+
+      wr.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+      wr.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+    end
+  end
+
+  config.wrappers :horizontal_radio_and_checkboxes, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|
+    b.use :html5
+    b.optional :readonly
+
+    b.use :label, class: &#39;col-sm-3 control-label&#39;
+
+    b.wrapper tag: &#39;div&#39;, class: &#39;col-sm-9&#39; do |ba|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Identical code found in 2 nodes</span>              <span>Locations:</span>                  <a href="simple_form_bootstrap.html#L83" class="js-smell-location">0</a>                  <a href="simple_form_bootstrap.html#L110" class="js-smell-location">1</a>                  </div>  </li></ol>
+      ba.use :input
+      ba.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+      ba.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+    end
+  end
+
+  config.wrappers :inline_form, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="simple_form_bootstrap.html#L9" class="js-smell-location">0</a>                  <a href="simple_form_bootstrap.html#L117" class="js-smell-location">1</a>                  </div>  </li></ol>
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: &#39;sr-only&#39;
+
+    b.use :input, class: &#39;form-control&#39;
+    b.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+    b.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+  end
+
+  config.wrappers :multi_select, tag: &#39;div&#39;, class: &#39;form-group&#39;, error_class: &#39;has-error&#39; do |b|
+    b.use :html5
+    b.optional :readonly
+    b.use :label, class: &#39;control-label&#39;
+    b.wrapper tag: &#39;div&#39;, class: &#39;form-inline&#39; do |ba|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="simple_form_bootstrap.html#L68" class="js-smell-location">0</a>                  <a href="simple_form_bootstrap.html#L136" class="js-smell-location">1</a>                  </div>  </li></ol>
+      ba.use :input, class: &#39;form-control&#39;
+      ba.use :error, wrap_with: { tag: &#39;span&#39;, class: &#39;help-block&#39; }
+      ba.use :hint,  wrap_with: { tag: &#39;p&#39;, class: &#39;help-block&#39; }
+    end
+  end
+  # Wrappers for forms and inputs using the Bootstrap toolkit.
+  # Check the Bootstrap docs (http://getbootstrap.com)
+  # to learn about the different styles for forms and inputs,
+  # buttons and other elements.
+  config.default_wrapper = :vertical_form
+  config.wrapper_mappings = {
+    check_boxes: :vertical_radio_and_checkboxes,
+    radio_buttons: :vertical_radio_and_checkboxes,
+    file: :vertical_file_input,
+    boolean: :vertical_boolean,
+    datetime: :multi_select,
+    date: :multi_select,
+    time: :multi_select
+  }
+end
+</code>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Javascripts -->
+    <script src='../../assets/javascripts/jquery.min.js'></script>
+    <script src='../../assets/javascripts/jquery.tablesorter.min.js'></script>
+    <script src='../../assets/javascripts/jquery.scrollTo.min.js'></script>
+    <script src='../../assets/javascripts/jquery.timeago.js'></script>
+    <script src='../../assets/javascripts/highcharts.src-4.0.1.js'></script>
+    <script src='../../assets/javascripts/prettify.js'></script>
+    <script src='../../assets/javascripts/bootstrap.min.js'></script>
+    <script src='../../assets/javascripts/application.js'></script>
+    <script src='../../assets/javascripts/jquery.filtertable.min.js'></script>
+  </body>
+</html>

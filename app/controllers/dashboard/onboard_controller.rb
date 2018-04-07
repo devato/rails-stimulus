@@ -7,7 +7,7 @@ class Dashboard::OnboardController < Dashboard::BaseController
 
   def organization
     if request.get?
-      redirect_to :onboard_project if current_user.organizations.size > 0
+      redirect_to :onboard_project unless current_user.organizations.empty?
       @form = Onboard::OrganizationForm.new
     elsif request.post?
       @form = Onboard::OrganizationForm.from_params(params)
@@ -22,12 +22,11 @@ class Dashboard::OnboardController < Dashboard::BaseController
   end
 
   def project
-
     present Onboard::ProjectPresenter.new(user: current_user)
 
     if request.get?
       redirect_to organization_root_path(presenter.organization_slug) if current_user.onboard.complete?
-      redirect_to :onboard_organization if current_user.organizations.size == 0
+      redirect_to :onboard_organization if current_user.organizations.empty?
       @form = Onboard::ProjectForm.new
     elsif request.post?
       @form = Onboard::ProjectForm.from_params(params)
@@ -46,5 +45,4 @@ class Dashboard::OnboardController < Dashboard::BaseController
   def set_onboarding
     @onboarding = true
   end
-
 end

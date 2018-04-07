@@ -5,9 +5,7 @@ class Dashboard::BaseController < ApplicationController
   # before_action :set_organization
 
   def redirect_to_onboard
-    unless current_user.onboard_complete?
-      redirect_to :onboard_organization
-    end
+    redirect_to :onboard_organization unless current_user.onboard_complete?
   end
 
   # def set_organization
@@ -19,5 +17,4 @@ class Dashboard::BaseController < ApplicationController
   #   @organization = current_user.organizations.default
   #   redirect_to organization_root_path(@organization.slug)
   # end
-
 end

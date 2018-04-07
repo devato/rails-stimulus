@@ -1,12 +1,12 @@
-class CreateProjects < ActiveRecord::Migration[5.1]
+class CreateProjects < ActiveRecord::Migration[5.2]
   def change
-    create_table :projects do |t|
+    create_table :projects, id: :uuid, partition_key: :organization_id do |t|
       t.string :name
-      t.string :slug
-      t.belongs_to :organization, foreign_key: true
-      t.belongs_to :supported_language, foreign_key: true
-
+      t.string :slug, index: true
+      t.references :organization, null: false
+      t.references :supported_language, null: false
       t.timestamps
     end
+    create_distributed_table :projects, :organization_id
   end
 end

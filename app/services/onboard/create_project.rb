@@ -1,5 +1,4 @@
 class Onboard::CreateProject < Rectify::Command
-
   def initialize(form)
     @form = form
   end
@@ -50,6 +49,4 @@ class Onboard::CreateProject < Rectify::Command
   def send_user_details_to_crm
     # ...
   end
-
-
 end

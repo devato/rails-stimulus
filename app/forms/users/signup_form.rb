@@ -1,13 +1,13 @@
 class Users::SignupForm < Rectify::Form
   attribute :name, String
-  attribute :email,  String
-  attribute :password,  String
+  attribute :email, String
+  attribute :password, String
   attribute :password_confirmation, String
   attribute :terms
 
   validates :name, :email, :password, :password_confirmation, presence: true
   validates :email, email_address: true
-  validates :password, confirmation: true, length: {within: 6..40}
+  validates :password, confirmation: true, length: { within: 6..40 }
 
   validate :validate_email_uniqueness
 

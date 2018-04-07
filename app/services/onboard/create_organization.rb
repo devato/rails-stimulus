@@ -1,5 +1,4 @@
 class Onboard::CreateOrganization < Rectify::Command
-
   def initialize(form)
     @form = form
   end
@@ -27,7 +26,7 @@ class Onboard::CreateOrganization < Rectify::Command
   def create_organization
     @organization = Organization.create do |org|
       org.name = form.name
-      org.default = current_user.organizations.size == 0
+      org.default = current_user.organizations.empty?
     end
   end
 
@@ -54,6 +53,4 @@ class Onboard::CreateOrganization < Rectify::Command
   def send_user_details_to_crm
     # ...
   end
-
-
 end

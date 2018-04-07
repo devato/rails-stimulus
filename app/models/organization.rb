@@ -1,5 +1,4 @@
 class Organization < ApplicationRecord
-
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -8,5 +7,4 @@ class Organization < ApplicationRecord
   has_many :projects
 
   scope :default, -> { where(default: true).first }
-
 end

@@ -12,5 +12,4 @@ class Onboard::ProjectPresenter < Rectify::Presenter
   def organization_slug
     user.organizations.first.slug
   end
-
 end

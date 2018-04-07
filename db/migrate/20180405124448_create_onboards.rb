@@ -1,7 +1,7 @@
-class CreateOnboards < ActiveRecord::Migration[5.1]
+class CreateOnboards < ActiveRecord::Migration[5.2]
   def change
-    create_table :onboards do |t|
-      t.belongs_to :user, foreign_key: true
+    create_table :onboards, id: :uuid do |t|
+      t.belongs_to :user, null: false, index: true
       t.string :state
 
       t.timestamps

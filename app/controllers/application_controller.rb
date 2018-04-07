@@ -16,5 +16,4 @@ class ApplicationController < ActionController::Base
   def set_currents
     Current.user = current_user
   end
-
 end
