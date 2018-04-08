@@ -2,7 +2,7 @@ class Users::BaseController < ApplicationController
   include ApplicationHelper
   layout 'auth'
 
-  before_action :redirect_to_dashboard
+  before_action :redirect_to_dashboard, except: [:destroy]
 
   def redirect_to_dashboard
     redirect_to organization_home if Current.user.present?

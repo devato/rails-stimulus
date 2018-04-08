@@ -7,6 +7,7 @@ module Relay
     def call(env)
       _, organization_id, request_path = env['REQUEST_PATH'].split('/', 3)
 
+      Rails.logger.info "============ org: #{organization_id}"
       if organization_id.present?
         if Current.organization = Organization.find_by(slug: organization_id)
           env['SCRIPT_NAME']  = "/#{organization_id}"

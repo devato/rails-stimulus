@@ -5,19 +5,11 @@ module CurrentObjects
   included do
 
     set_current_tenant_through_filter
-    before_action :set_organization_as_tenant
-    before_action :set_current_user
+    before_action :set_current_objects
 
-    def set_organization_as_tenant
-      unless @organization = Current.organization
-        @organization = current_user.organizations.find_by(default: true)
-      end
-      Current.organization = @organization
-      set_current_tenant(@organization)
-    end
-
-    def set_current_user
-      Current.user = current_user
+    def set_current_objects
+      Relay::SetCurrentObjects.call(current_user)
+      set_current_tenant(Current.organization) if Current.organization.present?
     end
 
     def set_current_supported_languages
