@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2018_04_05_195832) do
     t.string "name"
     t.string "slug"
     t.boolean "default"
+    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_organizations_on_slug"
@@ -85,7 +86,6 @@ ActiveRecord::Schema.define(version: 2018_04_05_195832) do
     t.boolean "terms", default: false
     t.string "crypted_password"
     t.string "salt"
-    t.integer "active_organization_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,11 +1,11 @@
 h1 Homepage
 
 - if Current.user.present?
-  = link_to 'dashboard', organization_root_path(Current.organization.slug)
+  = link_to 'Dashboard', organization_root_path(Current.organization.slug)
 - else
-  = link_to 'login', login_path(script_name: false)
+  = link_to 'Login', login_path(script_name: false)
   | -
-  = link_to 'signup', signup_path(script_name: false)
+  = link_to 'Signup', signup_path(script_name: false)
 
 
 / div data-controller="hello"

@@ -4,6 +4,7 @@ class CreateOrganizations < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :slug, index: true
       t.boolean :default
+      t.boolean :active
       t.timestamps
     end
     create_distributed_table :organizations, :id

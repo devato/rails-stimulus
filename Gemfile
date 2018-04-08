@@ -29,6 +29,7 @@ group :development, :test do
   gem 'byebug', '~> 10.0', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.2'
   gem 'factory_bot', '~> 4.8'
+  gem 'ffaker', '~> 2.9.0'
 end
 
 group :test do
