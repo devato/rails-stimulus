@@ -27,10 +27,13 @@ gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   gem 'byebug', '~> 10.0', platforms: %i[mri mingw x64_mingw]
-  gem 'cucumber-rails', git: 'git@github.com:cucumber/cucumber-rails.git', require: false
-  gem 'database_cleaner', '~> 1.6'
   gem 'dotenv-rails', '~> 2.2'
   gem 'factory_bot', '~> 4.8'
+end
+
+group :test do
+  gem 'capybara-selenium', '~> 0.0.6'
+  gem 'database_cleaner', '~> 1.6'
   gem 'rspec-rails', '~> 3.7'
 end
 
