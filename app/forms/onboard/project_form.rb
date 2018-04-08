@@ -9,7 +9,7 @@ class Onboard::ProjectForm < Rectify::Form
   private
 
   def validate_name_uniqueness
-    return if Project.where(name: name).none?
+    return if Current.user.projects.where(name: name).none?
     errors.add(:name, 'Already in use')
   end
 end

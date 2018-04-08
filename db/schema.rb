@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2018_04_05_195832) do
     t.index ["supported_language_id"], name: "index_projects_on_supported_language_id"
   end
 
-  create_table "supported_languages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "supported_languages", force: :cascade do |t|
     t.string "name"
     t.string "image"
     t.boolean "active"

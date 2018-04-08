@@ -28,6 +28,6 @@ module Relay
       generate.orm :active_record, primary_key_type: :uuid
     end
 
-    config.middleware.use RouteMiddleware
+    # config.middleware.use RouteMiddleware
   end
 end

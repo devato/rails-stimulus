@@ -1,18 +1,18 @@
-h1 Greeting
+h1 Homepage
 
-div data-controller="hello"
-  input type="text" data-target="hello.name"
-  button data-action="click->hello#greet" Greet
-
-h1 Timezone
-
-div data-controller="time" data-time-endpoint='endy'
-  = time_zone_select 'time_zone', 'time_zone',
-    TZInfo::Timezone.all.sort,
-    { include_blank: false },
-    { data: { target: 'time.time_zone', action: 'change->time#changed_zone' }}
-
-  h3 data-target='time.display_time' Time to display
-  h3 data-target='time.display_time_zone' Timezone to display
-  button data-action='time#set_previous_time_zone' Previous Time Zone
-
+/ div data-controller="hello"
+/   input type="text" data-target="hello.name"
+/   button data-action="click->hello#greet" Greet
+/
+/ h1 Timezone
+/
+/ div data-controller="time" data-time-endpoint='endy'
+/   = time_zone_select 'time_zone', 'time_zone',
+/     TZInfo::Timezone.all.sort,
+/     { include_blank: false },
+/     { data: { target: 'time.time_zone', action: 'change->time#changed_zone' }}
+/
+/   h3 data-target='time.display_time' Time to display
+/   h3 data-target='time.display_time_zone' Timezone to display
+/   button data-action='time#set_previous_time_zone' Previous Time Zone
+/

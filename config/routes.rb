@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'dashboard/index#index'
+  root 'pages#home'
 
   namespace :users do
     resources :signups, only: %i[index new create]
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post 'logout' => 'users/sessions#destroy', as: :logout
 
   scope module: :dashboard do
+    get '/:organization_id' => 'index#index', as: :organization_root
+    resources :organizations
     resources :projects
   end
 end

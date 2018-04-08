@@ -34,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'bullet', '~> 5.0'
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'listen', '~> 3.1', '< 3.2'
   gem 'rack-livereload', '~> 0.3'

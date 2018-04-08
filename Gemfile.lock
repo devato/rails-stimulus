@@ -440,6 +440,7 @@ DEPENDENCIES
   activemodel-email_address_validator (~> 1.0)
   activerecord-multi-tenant!
   bootsnap (~> 1.2)
+  bullet (~> 5.0)
   byebug (~> 10.0)
   database_cleaner (~> 1.6)
   dotenv-rails (~> 2.2)

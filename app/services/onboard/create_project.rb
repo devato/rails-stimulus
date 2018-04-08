@@ -9,7 +9,6 @@ class Onboard::CreateProject < Rectify::Command
     transaction do
       create_project
       connect_project_data
-      set_onboard_state
       notify_admins
       audit_event
       send_user_details_to_crm
@@ -32,10 +31,6 @@ class Onboard::CreateProject < Rectify::Command
 
   def connect_project_data
     current_user.projects << project
-  end
-
-  def set_onboard_state
-    current_user.onboard.finish!
   end
 
   def notify_admins

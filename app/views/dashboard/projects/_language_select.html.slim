@@ -1,7 +1,7 @@
 .row
   .col-sm-12
-    - if @supported_languages.present?
-      - @supported_languages.each do |lang|
+    - if Current.supported_languages.present?
+      - Current.supported_languages.each do |lang|
         .radio.radio-primary
           = form.radio_button :supported_language_id, lang.id
           label
@@ -10,7 +10,7 @@
             span.radio__text
               |  &nbsp;
               = lang.name
-      - if @form&.errors[:supported_language_id]
+      - if @project_form&.errors[:supported_language_id].any?
         .has-error
           span.help-block Please select a language or framework
 

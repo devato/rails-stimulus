@@ -2,7 +2,7 @@ header#topnav
   .topbar-main
     .container-fluid
       .logo
-        = link_to root_path do
+        = link_to organization_home do
           .logo__img
             = image_tag asset_pack_path('images/logo-light.png'), height: '26', class: 'logo-large'
           .logo__text Relay
@@ -11,7 +11,7 @@ header#topnav
           #navigation
             ul.navigation-menu
               li.has-submenu
-                = link_to root_path do
+                = link_to organization_home do
                   span
                     i.ti-home
               li.has-submenu
@@ -56,9 +56,9 @@ header#topnav
                 / .dropdown-menu.dropdown-menu-right
                 /   - if @other_organizations.size > 0
                 /     - @other_organizations.each do |org|
-                /         = link_to org.name, root_path,
+                /         = link_to org.name, organization_home,
                 /           class: 'dropdown-item'
-                /   = link_to organization_root_path(session[:organization]),
+                /   = link_to organization_home,
                 /     class: 'dropdown-item' do
                 /      | Create Organization
           li.dropdown
