@@ -7,9 +7,12 @@ development:
   <<: *default
   url: <%= (ENV['DATABASE_URL'] + '_development') if ENV['DATABASE_URL'].present?%>
 
-test:
+test: &test
   <<: *default
   url: <%= (ENV['DATABASE_URL'] + '_test') if ENV['DATABASE_URL'].present?%>
 
 production:
   <<: *default
+
+cucumber:
+  <<: *test
