@@ -7,6 +7,7 @@ class SorceryCore < ActiveRecord::Migration[5.2]
       t.boolean :terms, default: false
       t.string :crypted_password
       t.string :salt
+      t.integer :active_organization_id, null: false
 
       t.timestamps null: false
     end

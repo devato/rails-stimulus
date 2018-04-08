@@ -2,7 +2,7 @@ header#topnav
   .topbar-main
     .container-fluid
       .logo
-        = link_to '/' do
+        = link_to root_path(script_name: false) do
           .logo__img
             = image_tag asset_pack_path('images/logo-light.png'), height: '26', class: 'logo-large'
           .logo__text Relay
@@ -83,7 +83,7 @@ header#topnav
                 i.ti-lock
                 span
                   | Lock Screen
-              = link_to :logout, method: :post, class: 'dropdown-item notify-item' do
+              = link_to logout_path(script_name: false), method: :post, class: 'dropdown-item notify-item' do
                 i.ti-power-off
                 span
                   | Logout

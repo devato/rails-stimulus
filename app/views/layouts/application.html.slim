@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title
+      | Relay
+    = csrf_meta_tags
+    = stylesheet_pack_tag 'auth_styles'
+    = javascript_pack_tag 'auth'
+    = yield(:head)
+  body.session-page
+    = yield
+    = yield(:bottom)

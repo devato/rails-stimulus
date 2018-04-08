@@ -7,6 +7,10 @@ module Relay
   #    depending on org present? or nil?
   #    will determine the correct root path
   #    to use.
+  # 3. By the time the controllers/services
+  #    run, the Current org is set and
+  #    it will use it, or find the default
+  #    org. See services/relay/set_current_objects.rb
   class RouteMiddleware
     def initialize(app)
       @app = app

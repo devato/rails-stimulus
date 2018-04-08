@@ -1,10 +1,19 @@
 class OrganizationPresent
+
+  def current_user(request)
+    User.find_by_id(request.session[:user_id])
+  end
+
   def self.matches?(request)
     Current.organization.present?
   end
 end
 
 class OrganizationNotPresent
+  def current_user(request)
+    User.find_by_id(request.session[:user_id])
+  end
+
   def self.matches?(request)
     Current.organization.nil?
   end
@@ -19,6 +28,7 @@ Rails.application.routes.draw do
     resources :signups, only: %i[index new create]
     resources :sessions, only: %i[index new create]
   end
+  get 'signup' => 'users/signups#new', as: :signup
   get 'login' => 'users/sessions#new', as: :login
   post 'logout' => 'users/sessions#destroy', as: :logout
 

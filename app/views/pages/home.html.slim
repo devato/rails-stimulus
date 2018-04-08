@@ -1,6 +1,12 @@
 h1 Homepage
 
-= link_to 'dashboard', organization_root_path(Current.organization.slug)
+- if Current.user.present?
+  = link_to 'dashboard', organization_root_path(Current.organization.slug)
+- else
+  = link_to 'login', login_path(script_name: false)
+  | -
+  = link_to 'signup', signup_path(script_name: false)
+
 
 / div data-controller="hello"
 /   input type="text" data-target="hello.name"
