@@ -24,7 +24,6 @@ module Relay
 
     def set_organization_as_tenant
       if Current.user.present?
-        Rails.logger.info "====== current org from service: #{Current&.organization&.slug}"
         Current.organization ||= Current.user.organizations.find_by(default: true)
       end
     end
