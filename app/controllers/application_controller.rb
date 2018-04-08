@@ -13,8 +13,4 @@ class ApplicationController < ActionController::Base
     redirect_to login_path, alert: 'Please login first'
   end
 
-  def set_supported_languages
-    @supported_languages = SupportedLanguage.active
-  end
-
 end

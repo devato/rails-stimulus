@@ -1,6 +1,7 @@
 h1 Homepage
 
-= link_to 'dashboard', organization_home
+= link_to 'dashboard', organization_root_path(Current.organization.slug)
+
 / div data-controller="hello"
 /   input type="text" data-target="hello.name"
 /   button data-action="click->hello#greet" Greet

@@ -5,7 +5,7 @@ class Dashboard::ProjectsController < Dashboard::BaseController
   before_action :set_presenter, only: [:new, :edit, :create, :update]
 
   def new
-    redirect_to :new_organization if current_user.organizations.empty?
+    redirect_to :new_organization if Current.user.organizations.empty?
     @project_form = Onboard::ProjectForm.new
     if request.get?
     elsif request.post?
@@ -35,6 +35,10 @@ class Dashboard::ProjectsController < Dashboard::BaseController
 
   def set_presenter
     present Onboard::ProjectPresenter.new(user: Current.user)
+  end
+
+  def set_supported_languages
+    @supported_languages = SupportedLanguage.active
   end
 
 end
