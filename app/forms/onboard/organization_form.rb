@@ -9,7 +9,7 @@ class Onboard::OrganizationForm < Rectify::Form
   private
 
   def validate_name_uniqueness
-    return if Organization.where(name: name).none?
+    return if Current.user.organizations.where(name: name).none?
     errors.add(:name, 'Already in use')
   end
 end

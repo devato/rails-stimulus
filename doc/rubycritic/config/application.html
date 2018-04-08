@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-06 14:14:37 -0400'>2018-04-06 14:14:37 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-08 11:53:24 -0400'>2018-04-08 11:53:24 -0400</time>
         
       </span>
     </div>
@@ -65,12 +65,12 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">32</span><small> lines of codes</small></div>
+              <div><span class="metric">33</span><small> lines of codes</small></div>
               <div><span class="metric">0</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">N/A</span><small> complexity/method</small></div>
-              <div><span class="metric">3</span><small> churn</small></div>
+              <div><span class="metric">6</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">0.0</span><small> complexity</small></div>
@@ -106,7 +106,7 @@ require &#39;action_controller/railtie&#39;
 require &#39;action_mailer/railtie&#39;
 require &#39;action_view/railtie&#39;
 require &#39;action_cable/engine&#39;
-require_relative &#39;../lib/relay/organization_middleware&#39;
+require_relative &#39;../lib/relay/route_middleware&#39;
 
 # Require the gems listed in Gemfile, including any gems
 # you&#39;ve limited to :test, :development, or :production.
@@ -121,9 +121,10 @@ module Relay
       generate.assets false
       generate.view_specs false
       generate.system_tests false
+      generate.orm :active_record, primary_key_type: :uuid
     end
 
-    config.middleware.use OrganizationMiddleware
+    config.middleware.use RouteMiddleware
   end
 end
 </code>

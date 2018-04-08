@@ -8,8 +8,8 @@ module Users
       return broadcast(:invalid) if form.invalid?
 
       transaction do
-        create_default_organization
         create_user
+        create_organization
         connect_user_and_organization
         login_user
         notify_admins
@@ -36,8 +36,12 @@ module Users
       )
     end
 
-    def create_default_organization
-      @organization = Organization.create(name: 'default', default: true)
+    def create_organization
+      @organization = Organization.create(
+        name: form.organization_name,
+        default: true,
+        active: true,
+      )
     end
 
     def connect_user_and_organization

@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-05 14:33:10 -0400'>2018-04-05 14:33:10 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-07 21:32:31 -0400'>2018-04-07 21:32:31 -0400</time>
         
       </span>
     </div>
@@ -65,15 +65,15 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">26</span><small> lines of codes</small></div>
+              <div><span class="metric">27</span><small> lines of codes</small></div>
               <div><span class="metric">1</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">13.9</span><small> complexity/method</small></div>
-              <div><span class="metric">5</span><small> churn</small></div>
+              <div><span class="metric">0.0</span><small> complexity/method</small></div>
+              <div><span class="metric">7</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">13.93</span><small> complexity</small></div>
+              <div><span class="metric">0.0</span><small> complexity</small></div>
               <div><span class="metric">0</span><small> duplications</small></div>
             </div>
           </div>
@@ -85,8 +85,8 @@
             <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
             <li class="active">
               <a href="#" id="toggle-smells" class="toggle-button button">
-                2
-                smells
+                1
+                smell
               </a>
             </li>
           </ul>
@@ -104,20 +104,21 @@
   validates :email, uniqueness: true
 
   has_one :onboard
-  has_many :user_organizations
-  has_many :organizations, through: :user_organizations
+  has_many :organization_users
+  has_many :organizations, through: :organization_users
 
-  has_many :user_projects
-  has_many :projects, through: :user_projects
+  has_many :project_users
+  has_many :projects, through: :project_users
 
   def onboard_complete?
-    return false unless !organizations.empty? &amp;&amp; !projects.empty?
-    if onboard.nil?<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Nil-Check.md" target="_blank"><b>NilCheck</b></a>        </span>      </div>      <span>User#onboard_complete? performs a nil-check</span>          </div>  </li></ol>
-      create_onboard!
-      false
-    else
-      onboard.complete?
-    end
+    return true
+    # return false unless !organizations.empty? &amp;&amp; !projects.empty?
+    # if onboard.nil?
+    #   create_onboard!
+    #   false
+    # else
+    #   onboard.complete?
+    # end
   end
 end
 </code>

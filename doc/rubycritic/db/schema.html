@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-06 14:14:37 -0400'>2018-04-06 14:14:37 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-08 15:54:14 -0400'>2018-04-08 15:54:14 -0400</time>
         
       </span>
     </div>
@@ -65,15 +65,15 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">98</span><small> lines of codes</small></div>
+              <div><span class="metric">93</span><small> lines of codes</small></div>
               <div><span class="metric">0</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">N/A</span><small> complexity/method</small></div>
-              <div><span class="metric">7</span><small> churn</small></div>
+              <div><span class="metric">11</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">73.68</span><small> complexity</small></div>
+              <div><span class="metric">75.18</span><small> complexity</small></div>
               <div><span class="metric">60</span><small> duplications</small></div>
             </div>
           </div>
@@ -109,7 +109,9 @@
 ActiveRecord::Schema.define(version: 2018_04_05_195832) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension &quot;pgcrypto&quot;
   enable_extension &quot;plpgsql&quot;
+  enable_extension &quot;uuid-ossp&quot;
 
   create_table &quot;friendly_id_slugs&quot;, force: :cascade do |t|
     t.string &quot;slug&quot;, null: false
@@ -123,74 +125,67 @@ ActiveRecord::Schema.define(version: 2018_04_05_195832) do
     t.index [&quot;sluggable_type&quot;], name: &quot;index_friendly_id_slugs_on_sluggable_type&quot;
   end
 
-  create_table &quot;onboards&quot;, force: :cascade do |t|
-    t.bigint &quot;user_id&quot;
+  create_table &quot;onboards&quot;, id: :uuid, default: -&gt; { &quot;gen_random_uuid()&quot; }, force: :cascade do |t|
+    t.bigint &quot;user_id&quot;, null: false
     t.string &quot;state&quot;
     t.datetime &quot;created_at&quot;, null: false
     t.datetime &quot;updated_at&quot;, null: false
     t.index [&quot;user_id&quot;], name: &quot;index_onboards_on_user_id&quot;
   end
 
+  create_table &quot;organization_users&quot;, id: false, force: :cascade do |t|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="schema.html#L40" class="js-smell-location">0</a>                  <a href="schema.html#L56" class="js-smell-location">1</a>                  </div>  </li></ol>
+    t.bigint &quot;organization_id&quot;, null: false
+    t.bigint &quot;user_id&quot;, null: false
+    t.index [&quot;user_id&quot;, &quot;organization_id&quot;], name: &quot;index_organization_users_on_user_id_and_organization_id&quot;
+  end
+
   create_table &quot;organizations&quot;, force: :cascade do |t|
     t.string &quot;name&quot;
     t.string &quot;slug&quot;
-    t.string &quot;size&quot;
-    t.string &quot;industry&quot;
-    t.string &quot;website&quot;
     t.boolean &quot;default&quot;
+    t.boolean &quot;active&quot;
     t.datetime &quot;created_at&quot;, null: false
     t.datetime &quot;updated_at&quot;, null: false
+    t.index [&quot;slug&quot;], name: &quot;index_organizations_on_slug&quot;
   end
 
-  create_table &quot;projects&quot;, force: :cascade do |t|
+  create_table &quot;project_users&quot;, id: false, force: :cascade do |t|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="schema.html#L40" class="js-smell-location">0</a>                  <a href="schema.html#L56" class="js-smell-location">1</a>                  </div>  </li></ol>
+    t.bigint &quot;project_id&quot;, null: false
+    t.bigint &quot;user_id&quot;, null: false
+    t.index [&quot;user_id&quot;, &quot;project_id&quot;], name: &quot;index_project_users_on_user_id_and_project_id&quot;
+  end
+
+  create_table &quot;projects&quot;, primary_key: [&quot;id&quot;, &quot;organization_id&quot;], force: :cascade do |t|
+    t.bigserial &quot;id&quot;, null: false
     t.string &quot;name&quot;
     t.string &quot;slug&quot;
-    t.bigint &quot;organization_id&quot;
-    t.bigint &quot;supported_language_id&quot;
+    t.bigint &quot;organization_id&quot;, null: false
+    t.bigint &quot;supported_language_id&quot;, null: false
     t.datetime &quot;created_at&quot;, null: false
     t.datetime &quot;updated_at&quot;, null: false
     t.index [&quot;organization_id&quot;], name: &quot;index_projects_on_organization_id&quot;
+    t.index [&quot;slug&quot;], name: &quot;index_projects_on_slug&quot;
     t.index [&quot;supported_language_id&quot;], name: &quot;index_projects_on_supported_language_id&quot;
   end
 
   create_table &quot;supported_languages&quot;, force: :cascade do |t|
     t.string &quot;name&quot;
-    t.boolean &quot;active&quot;
     t.string &quot;image&quot;
-  end
-
-  create_table &quot;user_organizations&quot;, id: false, force: :cascade do |t|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="schema.html#L66" class="js-smell-location">0</a>                  <a href="schema.html#L73" class="js-smell-location">1</a>                  </div>  </li></ol>
-    t.bigint &quot;user_id&quot;
-    t.bigint &quot;organization_id&quot;
-    t.index [&quot;organization_id&quot;], name: &quot;index_user_organizations_on_organization_id&quot;
-    t.index [&quot;user_id&quot;], name: &quot;index_user_organizations_on_user_id&quot;
-  end
-
-  create_table &quot;user_projects&quot;, id: false, force: :cascade do |t|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="schema.html#L66" class="js-smell-location">0</a>                  <a href="schema.html#L73" class="js-smell-location">1</a>                  </div>  </li></ol>
-    t.bigint &quot;user_id&quot;
-    t.bigint &quot;project_id&quot;
-    t.index [&quot;project_id&quot;], name: &quot;index_user_projects_on_project_id&quot;
-    t.index [&quot;user_id&quot;], name: &quot;index_user_projects_on_user_id&quot;
+    t.boolean &quot;active&quot;
+    t.index [&quot;name&quot;], name: &quot;index_supported_languages_on_name&quot;
   end
 
   create_table &quot;users&quot;, force: :cascade do |t|
     t.string &quot;email&quot;, null: false
+    t.string &quot;first_name&quot;
+    t.string &quot;last_name&quot;
+    t.boolean &quot;terms&quot;, default: false
     t.string &quot;crypted_password&quot;
     t.string &quot;salt&quot;
     t.datetime &quot;created_at&quot;, null: false
     t.datetime &quot;updated_at&quot;, null: false
-    t.string &quot;name&quot;
-    t.boolean &quot;terms&quot;
-    t.index [&quot;email&quot;], name: &quot;index_users_on_email&quot;, unique: true
   end
 
-  add_foreign_key &quot;onboards&quot;, &quot;users&quot;
-  add_foreign_key &quot;projects&quot;, &quot;organizations&quot;
-  add_foreign_key &quot;projects&quot;, &quot;supported_languages&quot;
-  add_foreign_key &quot;user_organizations&quot;, &quot;organizations&quot;
-  add_foreign_key &quot;user_organizations&quot;, &quot;users&quot;
-  add_foreign_key &quot;user_projects&quot;, &quot;projects&quot;
-  add_foreign_key &quot;user_projects&quot;, &quot;users&quot;
 end
 </code>
   </div>

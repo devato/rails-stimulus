@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-06 14:14:37 -0400'>2018-04-06 14:14:37 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-08 11:53:24 -0400'>2018-04-08 11:53:24 -0400</time>
         
       </span>
     </div>
@@ -65,15 +65,15 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">9</span><small> lines of codes</small></div>
-              <div><span class="metric">3</span><small> methods</small></div>
+              <div><span class="metric">44</span><small> lines of codes</small></div>
+              <div><span class="metric">6</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">1.2</span><small> complexity/method</small></div>
-              <div><span class="metric">1</span><small> churn</small></div>
+              <div><span class="metric">5.9</span><small> complexity/method</small></div>
+              <div><span class="metric">5</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">3.74</span><small> complexity</small></div>
+              <div><span class="metric">35.33</span><small> complexity</small></div>
               <div><span class="metric">0</span><small> duplications</small></div>
             </div>
           </div>
@@ -85,8 +85,8 @@
             <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
             <li class="active">
               <a href="#" id="toggle-smells" class="toggle-button button">
-                1
-                smell
+                3
+                smells
               </a>
             </li>
           </ul>
@@ -94,14 +94,49 @@
       </div>
     </div>
 
-    <code class="prettyprint linenums lang-ruby file-code js-file-code">class Dashboard::ProjectsController &lt; Dashboard::BaseController<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>Dashboard::ProjectsController has no descriptive comment</span>          </div>  </li></ol>
-  def index; end
+    <code class="prettyprint linenums lang-ruby file-code js-file-code">class Dashboard::ProjectsController &lt; Dashboard::BaseController<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Instance-Variable-Assumption.md" target="_blank"><b>InstanceVariableAssumption</b></a>        </span>      </div>      <span>Dashboard::ProjectsController assumes too much for instance variable '@project_form'</span>          </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>Dashboard::ProjectsController has no descriptive comment</span>          </div>  </li></ol>
 
-  def new; end
+  before_action :set_project, only: [:edit, :update]
+  before_action :set_current_supported_languages, only: [:new, :edit, :create, :update]
+  before_action :set_presenter, only: [:new, :edit, :create, :update]
+
+  def new
+    redirect_to :new_organization if Current.user.organizations.empty?
+    @project_form = Onboard::ProjectForm.new
+    if request.get?
+    elsif request.post?
+    end
+  end
+
+  def create<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>Dashboard::ProjectsController#create has approx 7 statements</span>          </div>  </li></ol>
+    @project_form = Onboard::ProjectForm.from_params(params)
+    Onboard::CreateProject.call(@project_form) do
+      on(:ok) do
+        flash[:notice] = &#39;Successfully created project&#39;
+        redirect_back_or_to organization_home
+      end
+      on(:invalid) { render :new }
+    end
+  end
 
   def show
     @project = Project.find(params[:id])
   end
+
+  private
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  def set_presenter
+    present Onboard::ProjectPresenter.new(user: Current.user)
+  end
+
+  def set_supported_languages
+    @supported_languages = SupportedLanguage.active
+  end
+
 end
 </code>
   </div>

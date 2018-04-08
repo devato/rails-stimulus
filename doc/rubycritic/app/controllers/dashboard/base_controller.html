@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-06 14:14:37 -0400'>2018-04-06 14:14:37 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-08 11:15:20 -0400'>2018-04-08 11:15:20 -0400</time>
         
       </span>
     </div>
@@ -65,15 +65,15 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">20</span><small> lines of codes</small></div>
-              <div><span class="metric">1</span><small> methods</small></div>
+              <div><span class="metric">5</span><small> lines of codes</small></div>
+              <div><span class="metric">0</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">3.5</span><small> complexity/method</small></div>
-              <div><span class="metric">5</span><small> churn</small></div>
+              <div><span class="metric">N/A</span><small> complexity/method</small></div>
+              <div><span class="metric">9</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">3.45</span><small> complexity</small></div>
+              <div><span class="metric">0.0</span><small> complexity</small></div>
               <div><span class="metric">0</span><small> duplications</small></div>
             </div>
           </div>
@@ -97,22 +97,7 @@
     <code class="prettyprint linenums lang-ruby file-code js-file-code">class Dashboard::BaseController &lt; ApplicationController<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>Dashboard::BaseController has no descriptive comment</span>          </div>  </li></ol>
   layout &#39;dashboard&#39;
 
-  before_action :redirect_to_onboard
-  # before_action :set_organization
 
-  def redirect_to_onboard
-    redirect_to :onboard_organization unless current_user.onboard_complete?
-  end
-
-  # def set_organization
-  #   if params[:organization_id].present?
-  #     @organization = current_user.organizations.friendly.find(params[:organization_id])
-  #   end
-  #   @other_organizations = current_user.organizations.where.not(id: @organization.id)
-  # rescue ActiveRecord::RecordNotFound
-  #   @organization = current_user.organizations.default
-  #   redirect_to organization_root_path(@organization.slug)
-  # end
 end
 </code>
   </div>

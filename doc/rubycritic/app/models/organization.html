@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-05 16:38:14 -0400'>2018-04-05 16:38:14 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-07 21:32:31 -0400'>2018-04-07 21:32:31 -0400</time>
         
       </span>
     </div>
@@ -65,12 +65,12 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">10</span><small> lines of codes</small></div>
+              <div><span class="metric">13</span><small> lines of codes</small></div>
               <div><span class="metric">0</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">N/A</span><small> complexity/method</small></div>
-              <div><span class="metric">3</span><small> churn</small></div>
+              <div><span class="metric">6</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">0.0</span><small> complexity</small></div>
@@ -95,6 +95,9 @@
     </div>
 
     <code class="prettyprint linenums lang-ruby file-code js-file-code">class Organization &lt; ApplicationRecord<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>Organization has no descriptive comment</span>          </div>  </li></ol>
+
+  multi_tenant :organization
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 

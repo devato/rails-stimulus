@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-06 14:14:37 -0400'>2018-04-06 14:14:37 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-08 11:15:20 -0400'>2018-04-08 11:15:20 -0400</time>
         
       </span>
     </div>
@@ -65,15 +65,15 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">41</span><small> lines of codes</small></div>
-              <div><span class="metric">6</span><small> methods</small></div>
+              <div><span class="metric">31</span><small> lines of codes</small></div>
+              <div><span class="metric">4</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">2.7</span><small> complexity/method</small></div>
-              <div><span class="metric">3</span><small> churn</small></div>
+              <div><span class="metric">3.9</span><small> complexity/method</small></div>
+              <div><span class="metric">5</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">16.35</span><small> complexity</small></div>
+              <div><span class="metric">15.76</span><small> complexity</small></div>
               <div><span class="metric">0</span><small> duplications</small></div>
             </div>
           </div>
@@ -85,7 +85,7 @@
             <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
             <li class="active">
               <a href="#" id="toggle-smells" class="toggle-button button">
-                3
+                2
                 smells
               </a>
             </li>
@@ -100,14 +100,12 @@
       @form = form
     end
 
-    def call<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>Users::Login#call has approx 7 statements</span>          </div>  </li></ol>
+    def call
       return broadcast(:invalid) if form.invalid?
       return broadcast(:not_found) unless login_user
 
       transaction do
-        notify_admins
-        audit_event
-        send_user_details_to_crm
+        set_current_objects
       end
 
       broadcast(:ok, @user)
@@ -115,24 +113,16 @@
 
     private
 
-    attr_reader :form
+    attr_reader :form, :user
 
     def login_user
       @user = login(@form.email, @form.password)
-      Current.user = @user
     end
 
-    def notify_admins
-      # ...
+    def set_current_objects
+      Relay::SetCurrentObjects.call(user)
     end
 
-    def audit_event
-      # ...
-    end
-
-    def send_user_details_to_crm
-      # ...
-    end
   end
 end
 </code>

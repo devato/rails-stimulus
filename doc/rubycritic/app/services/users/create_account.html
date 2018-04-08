@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-05 09:40:00 -0400'>2018-04-05 09:40:00 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-07 21:32:31 -0400'>2018-04-07 21:32:31 -0400</time>
         
       </span>
     </div>
@@ -65,15 +65,15 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">56</span><small> lines of codes</small></div>
-              <div><span class="metric">8</span><small> methods</small></div>
+              <div><span class="metric">67</span><small> lines of codes</small></div>
+              <div><span class="metric">9</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">3.2</span><small> complexity/method</small></div>
-              <div><span class="metric">2</span><small> churn</small></div>
+              <div><span class="metric">3.7</span><small> complexity/method</small></div>
+              <div><span class="metric">4</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">25.27</span><small> complexity</small></div>
+              <div><span class="metric">33.54</span><small> complexity</small></div>
               <div><span class="metric">0</span><small> duplications</small></div>
             </div>
           </div>
@@ -85,7 +85,7 @@
             <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
             <li class="active">
               <a href="#" id="toggle-smells" class="toggle-button button">
-                3
+                4
                 smells
               </a>
             </li>
@@ -95,17 +95,18 @@
     </div>
 
     <code class="prettyprint linenums lang-ruby file-code js-file-code">module Users
-  class CreateAccount &lt; Rectify::Command<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Instance-Variable-Assumption.md" target="_blank"><b>InstanceVariableAssumption</b></a>        </span>      </div>      <span>Users::CreateAccount assumes too much for instance variable '@user'</span>          </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>Users::CreateAccount has no descriptive comment</span>          </div>  </li></ol>
+  class CreateAccount &lt; Rectify::Command<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Instance-Variable-Assumption.md" target="_blank"><b>InstanceVariableAssumption</b></a>        </span>      </div>      <span>Users::CreateAccount assumes too much for instance variable '@organization'</span>          </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Instance-Variable-Assumption.md" target="_blank"><b>InstanceVariableAssumption</b></a>        </span>      </div>      <span>Users::CreateAccount assumes too much for instance variable '@user'</span>          </div>  </li>  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>Users::CreateAccount has no descriptive comment</span>          </div>  </li></ol>
     def initialize(form)
       @form = form
     end
 
-    def call<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>Users::CreateAccount#call has approx 9 statements</span>          </div>  </li></ol>
+    def call<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank"><b>TooManyStatements</b></a>        </span>      </div>      <span>Users::CreateAccount#call has approx 10 statements</span>          </div>  </li></ol>
       return broadcast(:invalid) if form.invalid?
 
       transaction do
         create_user
-        create_onboard
+        create_organization
+        connect_user_and_organization
         login_user
         notify_admins
         audit_event
@@ -120,8 +121,10 @@
     attr_reader :form
 
     def create_user
+      first_name, last_name = @form.name.split(&#39; &#39;, 2)
       @user = User.create!(
-        name: @form.name,
+        first_name: first_name,
+        last_name: last_name,
         email: @form.email,
         password: @form.password,
         password_confirmation: @form.password_confirmation,
@@ -129,8 +132,16 @@
       )
     end
 
-    def create_onboard
-      Onboard.create!(user: @user)
+    def create_organization
+      @organization = Organization.create(
+        name: form.organization_name,
+        default: true,
+        active: true,
+      )
+    end
+
+    def connect_user_and_organization
+      @user.organizations &lt;&lt; @organization
     end
 
     def login_user

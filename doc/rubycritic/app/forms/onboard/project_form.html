@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-05 14:33:10 -0400'>2018-04-05 14:33:10 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-08 10:32:32 -0400'>2018-04-08 10:32:32 -0400</time>
         
       </span>
     </div>
@@ -69,12 +69,12 @@
               <div><span class="metric">1</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">5.9</span><small> complexity/method</small></div>
-              <div><span class="metric">2</span><small> churn</small></div>
+              <div><span class="metric">8.9</span><small> complexity/method</small></div>
+              <div><span class="metric">4</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">5.89</span><small> complexity</small></div>
-              <div><span class="metric">0</span><small> duplications</small></div>
+              <div><span class="metric">8.86</span><small> complexity</small></div>
+              <div><span class="metric">16</span><small> duplications</small></div>
             </div>
           </div>
         </div>
@@ -85,8 +85,8 @@
             <li><a href="#" id="toggle-code" class="toggle-button button">code</a></li>
             <li class="active">
               <a href="#" id="toggle-smells" class="toggle-button button">
-                1
-                smell
+                2
+                smells
               </a>
             </li>
           </ul>
@@ -104,8 +104,8 @@
 
   private
 
-  def validate_name_uniqueness
-    return if Project.where(name: name).none?
+  def validate_name_uniqueness<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="http://docs.seattlerb.org/flay/" target="_blank"><b>DuplicateCode</b></a>        </span>      </div>      <span>Similar code found in 2 nodes</span>              <span>Locations:</span>                  <a href="organization_form.html#L11" class="js-smell-location">0</a>                  <a href="project_form.html#L11" class="js-smell-location">1</a>                  </div>  </li></ol>
+    return if Current.user.projects.where(name: name).none?
     errors.add(:name, &#39;Already in use&#39;)
   end
 end

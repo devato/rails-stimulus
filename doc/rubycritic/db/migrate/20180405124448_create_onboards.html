@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-05 09:40:00 -0400'>2018-04-05 09:40:00 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-07 14:33:32 -0400'>2018-04-07 14:33:32 -0400</time>
         
       </span>
     </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="col-md-3">
               <div><span class="metric">4.7</span><small> complexity/method</small></div>
-              <div><span class="metric">1</span><small> churn</small></div>
+              <div><span class="metric">2</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
               <div><span class="metric">4.71</span><small> complexity</small></div>
@@ -94,10 +94,10 @@
       </div>
     </div>
 
-    <code class="prettyprint linenums lang-ruby file-code js-file-code">class CreateOnboards &lt; ActiveRecord::Migration[5.1]<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>CreateOnboards has no descriptive comment</span>          </div>  </li></ol>
+    <code class="prettyprint linenums lang-ruby file-code js-file-code">class CreateOnboards &lt; ActiveRecord::Migration[5.2]<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>CreateOnboards has no descriptive comment</span>          </div>  </li></ol>
   def change
-    create_table :onboards do |t|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Uncommunicative-Variable-Name.md" target="_blank"><b>UncommunicativeVariableName</b></a>        </span>      </div>      <span>CreateOnboards#change has the variable name 't'</span>          </div>  </li></ol>
-      t.belongs_to :user, foreign_key: true<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>CreateOnboards#change refers to 't' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="20180405124448_create_onboards.html#L4" class="js-smell-location">0</a>                  <a href="20180405124448_create_onboards.html#L5" class="js-smell-location">1</a>                  <a href="20180405124448_create_onboards.html#L7" class="js-smell-location">2</a>                  </div>  </li></ol>
+    create_table :onboards, id: :uuid do |t|<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Uncommunicative-Variable-Name.md" target="_blank"><b>UncommunicativeVariableName</b></a>        </span>      </div>      <span>CreateOnboards#change has the variable name 't'</span>          </div>  </li></ol>
+      t.belongs_to :user, null: false, index: true<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>CreateOnboards#change refers to 't' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="20180405124448_create_onboards.html#L4" class="js-smell-location">0</a>                  <a href="20180405124448_create_onboards.html#L5" class="js-smell-location">1</a>                  <a href="20180405124448_create_onboards.html#L7" class="js-smell-location">2</a>                  </div>  </li></ol>
       t.string :state<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>CreateOnboards#change refers to 't' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="20180405124448_create_onboards.html#L4" class="js-smell-location">0</a>                  <a href="20180405124448_create_onboards.html#L5" class="js-smell-location">1</a>                  <a href="20180405124448_create_onboards.html#L7" class="js-smell-location">2</a>                  </div>  </li></ol>
 
       t.timestamps<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md" target="_blank"><b>FeatureEnvy</b></a>        </span>      </div>      <span>CreateOnboards#change refers to 't' more than self (maybe move it to another class?)</span>              <span>Locations:</span>                  <a href="20180405124448_create_onboards.html#L4" class="js-smell-location">0</a>                  <a href="20180405124448_create_onboards.html#L5" class="js-smell-location">1</a>                  <a href="20180405124448_create_onboards.html#L7" class="js-smell-location">2</a>                  </div>  </li></ol>

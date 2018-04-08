@@ -44,7 +44,7 @@
     <div class="file-time">
       <span class="committed-at">
         
-          Updated <time class='js-timeago' datetime='2018-04-06 14:14:37 -0400'>2018-04-06 14:14:37 -0400</time>
+          Updated <time class='js-timeago' datetime='2018-04-08 11:53:24 -0400'>2018-04-08 11:53:24 -0400</time>
         
       </span>
     </div>
@@ -65,15 +65,15 @@
           </div>
           <div class="code-statistics col-md-11">
             <div class="col-md-3">
-              <div><span class="metric">19</span><small> lines of codes</small></div>
-              <div><span class="metric">3</span><small> methods</small></div>
+              <div><span class="metric">16</span><small> lines of codes</small></div>
+              <div><span class="metric">1</span><small> methods</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">1.7</span><small> complexity/method</small></div>
-              <div><span class="metric">5</span><small> churn</small></div>
+              <div><span class="metric">2.2</span><small> complexity/method</small></div>
+              <div><span class="metric">9</span><small> churn</small></div>
             </div>
             <div class="col-md-3">
-              <div><span class="metric">5.03</span><small> complexity</small></div>
+              <div><span class="metric">2.2</span><small> complexity</small></div>
               <div><span class="metric">0</span><small> duplications</small></div>
             </div>
           </div>
@@ -96,8 +96,12 @@
 
     <code class="prettyprint linenums lang-ruby file-code js-file-code">class ApplicationController &lt; ActionController::Base<ol class="nocode errors smells">  <li>    <div class="description">      <div class="heading">        <span>          <i class="fa fa-warning" aria-hidden"true"=""></i>          <a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank"><b>IrresponsibleModule</b></a>        </span>      </div>      <span>ApplicationController has no descriptive comment</span>          </div>  </li></ol>
   protect_from_forgery with: :exception
+
   before_action :require_login
-  before_action :set_currents
+
+  include CurrentObjects
+  include Rectify::ControllerHelpers
+  include ApplicationHelper
 
   private
 
@@ -105,13 +109,6 @@
     redirect_to login_path, alert: &#39;Please login first&#39;
   end
 
-  def set_supported_languages
-    @supported_languages = SupportedLanguage.active
-  end
-
-  def set_currents
-    Current.user = current_user
-  end
 end
 </code>
   </div>
