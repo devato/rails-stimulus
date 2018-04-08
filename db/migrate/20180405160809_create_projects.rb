@@ -1,6 +1,6 @@
 class CreateProjects < ActiveRecord::Migration[5.2]
-  def change
-    create_table :projects, id: :uuid, partition_key: :organization_id do |t|
+  def up
+    create_table :projects, partition_key: :organization_id do |t|
       t.string :name
       t.string :slug, index: true
       t.references :organization, null: false
@@ -8,5 +8,9 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.timestamps
     end
     create_distributed_table :projects, :organization_id
+  end
+
+  def down
+    drop_table :projects
   end
 end

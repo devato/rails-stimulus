@@ -1,5 +1,7 @@
 class Organization < ApplicationRecord
+
   multi_tenant :organization
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
