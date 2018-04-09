@@ -19,7 +19,7 @@ module Relay
     def call(env)
       set_request_data(env)
       if @organization_id.present?
-        if Current.organization = Organization.find_by(slug: @organization_id)
+        if (Current.organization = Organization.find_by(slug: @organization_id))
           env['SCRIPT_NAME']  = "/#{@organization_id}"
           env['PATH_INFO']    = "/#{@request_path}"
           env['REQUEST_PATH'] = "/#{@request_path}"
