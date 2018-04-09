@@ -1,5 +1,5 @@
 class Dashboard::ProjectsController < Dashboard::BaseController
-  before_action :set_project, only: %i[edit update]
+  before_action :set_project, only: %i[show edit update]
   before_action :set_current_supported_languages, only: %i[new edit create update]
   before_action :set_presenter, only: %i[new edit create update]
 
@@ -22,9 +22,7 @@ class Dashboard::ProjectsController < Dashboard::BaseController
     end
   end
 
-  def show
-    @project = Project.find(params[:id])
-  end
+  def show; end
 
   def edit; end
 
@@ -33,7 +31,7 @@ class Dashboard::ProjectsController < Dashboard::BaseController
   private
 
   def set_project
-    @project = Project.find(params[:id])
+    @project = Project.friendly.find(params[:id])
   end
 
   def set_presenter

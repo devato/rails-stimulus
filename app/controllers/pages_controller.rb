@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :require_login
+
   def home; end
 
   def features; end
@@ -7,4 +8,7 @@ class PagesController < ApplicationController
   def pricing; end
 
   def docs; end
+
+  private
+
 end

@@ -7,6 +7,9 @@ html
     = stylesheet_pack_tag 'dashboard_styles'
     = javascript_pack_tag 'application'
     = yield(:head)
+    javascript:
+      console.log('Current.org', "#{Current.organization.name}")
+      console.log('Current.user', "#{Current.user.email}")
   body
     = render 'dashboard/shared/nav'
     .wrapper

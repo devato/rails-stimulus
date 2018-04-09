@@ -3,18 +3,17 @@ class Dashboard::OrganizationsController < Dashboard::BaseController
 
   def new
     @onboarding = true
-    if request.get?
-      # redirect_to :onboard_project unless current_user.organizations.empty?
-      @form = Onboard::OrganizationForm.new
-    elsif request.post?
-      @form = Onboard::OrganizationForm.from_params(params)
-      Onboard::CreateOrganization.call(@form) do
-        on(:ok) do
-          flash[:notice] = 'Successfully created organization'
-          redirect_back_or_to :onboard_project
-        end
-        on(:invalid) { render :organization }
+    @org_form = Onboard::OrganizationForm.new
+  end
+
+  def create
+    @org_form = Onboard::OrganizationForm.from_params(params)
+    Onboard::CreateOrganization.call(@org_form) do
+      on(:ok) do
+        flash[:notice] = 'Successfully created organization'
+        redirect_back_or_to organization_home
       end
+      on(:invalid) { render :new }
     end
   end
 end

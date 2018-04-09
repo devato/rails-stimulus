@@ -9,7 +9,10 @@ module Relay
 
       transaction do
         set_current_user
-        set_organization_as_tenant
+        if Current.user.present?
+          set_organization
+          set_organizations
+        end
       end
       broadcast(:ok)
     end
@@ -22,8 +25,13 @@ module Relay
       Current.user = user
     end
 
-    def set_organization_as_tenant
+    def set_organization
       Current.organization ||= Current.user.organizations.find_by(default: true) if Current.user.present?
     end
+
+    def set_organizations
+      Current.organizations ||= Current.user.organizations.where.not(id: Current.organization.id)
+    end
+
   end
 end

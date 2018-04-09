@@ -4,17 +4,17 @@
 
     .panel.panel-default.panel-fill
       .panel-heading
-        h3.panel-title Let's get you set up.
+        h3.panel-title New Organization
       .panel-body
+        p Organizations give structure to your projects and teams.
+        br/
         .organization-form.row
           .col
-            = simple_form_for @form,
-              url: :onboard_organization,
+            = simple_form_for @org_form,
               method: :post,
               html: { class: 'form-horizontal' } do |f|
 
-              = f.input :name, label: false,
-                input_html: { placeholder: 'Organization Name' }
+              = f.input :name, input_html: { placeholder: 'eg. My Company' }
 
               .form-group
                 = f.button :submit, 'Continue', class: 'btn btn-primary'

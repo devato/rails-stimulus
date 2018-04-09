@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_one :onboard, dependent: :destroy
+  has_one :active_organization, dependent: :destroy
+
   has_many :organization_users, dependent: :destroy
   has_many :organizations, through: :organization_users
 

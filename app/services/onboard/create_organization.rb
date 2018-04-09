@@ -8,12 +8,8 @@ class Onboard::CreateOrganization < Rectify::Command
 
     transaction do
       create_organization
-      set_current_organization_session
       connect_user_to_organization
-      set_onboard_state
-      notify_admins
-      audit_event
-      send_user_details_to_crm
+      store_organization_in_session
     end
 
     broadcast(:ok)
@@ -30,27 +26,12 @@ class Onboard::CreateOrganization < Rectify::Command
     end
   end
 
-  def set_current_organization_session
-    session[:organization] = organization.slug
-  end
-
   def connect_user_to_organization
-    current_user.organizations << organization
+    Current.user.organizations << organization
   end
 
-  def set_onboard_state
-    current_user.onboard.organization_created!
+  def store_organization_in_session
+    session[:current_organization] = Current.organization.slug
   end
 
-  def notify_admins
-    # ...
-  end
-
-  def audit_event
-    # ...
-  end
-
-  def send_user_details_to_crm
-    # ...
-  end
 end

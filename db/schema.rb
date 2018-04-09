@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_05_195832) do
+ActiveRecord::Schema.define(version: 2018_04_09_025037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "active_organizations", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_active_organizations_on_organization_id"
+    t.index ["user_id"], name: "index_active_organizations_on_user_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -90,4 +97,6 @@ ActiveRecord::Schema.define(version: 2018_04_05_195832) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "active_organizations", "organizations"
+  add_foreign_key "active_organizations", "users"
 end
