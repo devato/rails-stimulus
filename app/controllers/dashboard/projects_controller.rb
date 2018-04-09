@@ -4,12 +4,12 @@ class Dashboard::ProjectsController < Dashboard::BaseController
   before_action :set_current_supported_languages, only: [:new, :edit, :create, :update]
   before_action :set_presenter, only: [:new, :edit, :create, :update]
 
+  skip_before_action :require_project
+
   def new
     redirect_to :new_organization if Current.user.organizations.empty?
     @project_form = Onboard::ProjectForm.new
-    if request.get?
-    elsif request.post?
-    end
+    @onboarding = true
   end
 
   def create

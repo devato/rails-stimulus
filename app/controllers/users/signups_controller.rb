@@ -12,7 +12,7 @@ class Users::SignupsController < Users::BaseController
   def create
     @signup_form = Users::SignupForm.from_params(params)
     Users::CreateAccount.call(@signup_form) do
-      on(:ok)      { redirect_back_or_to :new_project }
+      on(:ok)      { redirect_back_or_to organization_home }
       on(:invalid) { render :new }
     end
   end

@@ -4,8 +4,6 @@ RSpec.feature 'Onboard: Signup Spec', type: :feature do
 
   context 'As a visitor' do
 
-    let(:new_user) { build(:user) }
-
     scenario 'I should see a signup link on the homepage' do
       visit root_path
       expect(page).to have_text('Signup')
@@ -34,16 +32,7 @@ RSpec.feature 'Onboard: Signup Spec', type: :feature do
 
     context 'When form is valid' do
       scenario 'I should be able to register' do
-        visit users_signups_path
-        within('form.form-horizontal') do
-          fill_in('signup_name', with: "#{new_user.first_name} #{new_user.last_name}")
-          fill_in('signup_email', with: new_user.email)
-          fill_in('signup_password', with: new_user.password)
-          fill_in('signup_password_confirmation', with: new_user.password)
-          fill_in('signup_organization_name', with: 'orgname')
-          check('signup_terms')
-          click_button('Create account')
-        end
+        submit_registration
         expect(page).to have_content('Create Project')
       end
     end
@@ -51,20 +40,32 @@ RSpec.feature 'Onboard: Signup Spec', type: :feature do
 
   context 'As an active user' do
 
-    # let(:user) { create(:user) }
-    #
-    # before do
-    #   login(user)
-    # end
-    #
-    # scenario 'I should see a welcome message' do
-    #   visit root_path
-    #   expect(page).to have_text('Homepage')
-    # end
-    #
-    # scenario 'I should see a link to the dashboard' do
-    #   visit root_path
-    #   expect(page).to have_text('Dashboard')
-    # end
+    let(:user) { create(:user) }
+
+    before do
+      login(user)
+    end
+
+    context 'Given I have no projects' do
+      scenario 'I should see the new project page' do
+        visit signup_path
+        expect(page).to have_text('Create Project')
+      end
+    end
+
+    context 'Given I have an existing project' do
+
+      let(:project) { create(:project, organization: user.organizations.first) }
+
+      before do
+        user.projects << project
+      end
+
+      scenario 'I should see the organization dashboard' do
+        visit signup_path
+        expect(page).to have_text('Welcome')
+      end
+    end
+
   end
 end

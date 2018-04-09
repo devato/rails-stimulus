@@ -11,7 +11,7 @@ header#topnav
           #navigation
             ul.navigation-menu
               li.has-submenu
-                = link_to organization_home do
+                = link_to root_path do
                   span
                     i.ti-home
               li.has-submenu
@@ -23,7 +23,8 @@ header#topnav
                     - current_user.projects.each do |p|
                       li = link_to p.name, project_path(p)
                   - else
-                    li No projects
+                    li
+                      a No projects
                   li.divider
                   li
                     = link_to :new_project do

@@ -3,6 +3,7 @@ class Dashboard::OrganizationsController < Dashboard::BaseController
   def index; end
 
   def new
+    @onboarding = true
     if request.get?
       # redirect_to :onboard_project unless current_user.organizations.empty?
       @form = Onboard::OrganizationForm.new

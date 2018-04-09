@@ -12,6 +12,7 @@ module Users
         create_organization
         connect_user_and_organization
         login_user
+        set_current_objects
         notify_admins
         audit_event
         send_user_details_to_crm
@@ -22,7 +23,7 @@ module Users
 
     private
 
-    attr_reader :form
+    attr_reader :form, :user
 
     def create_user
       first_name, last_name = @form.name.split(' ', 2)
@@ -49,7 +50,12 @@ module Users
     end
 
     def login_user
-      @user = login(@form.email, @form.password)
+      # https://github.com/Sorcery/sorcery#core
+      @user = auto_login(user)
+    end
+
+    def set_current_objects
+      Relay::SetCurrentObjects.call(user)
     end
 
     def notify_admins
