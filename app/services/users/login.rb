@@ -26,6 +26,5 @@ module Users
     def set_current_objects
       Relay::SetCurrentObjects.call(user)
     end
-
   end
 end

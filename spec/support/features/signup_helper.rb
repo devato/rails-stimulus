@@ -1,6 +1,5 @@
 module Features
   module SignupHelper
-
     def submit_registration(new_user = build(:user))
       visit users_signups_path
       within('form.form-horizontal') do
@@ -14,7 +13,6 @@ module Features
       end
     end
   end
-
 end
 
 RSpec.configure do |config|

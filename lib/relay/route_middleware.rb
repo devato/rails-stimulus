@@ -37,7 +37,9 @@ module Relay
     #       so added a check for it so no other
     #       customizations needed in specs.
     def set_request_data(env)
-      @_, @organization_id, @request_path = nil, nil, nil
+      @_ = nil
+      @organization_id = nil
+      @request_path = nil
 
       if env['REQUEST_PATH'].present?
         @_, @organization_id, @request_path = env['REQUEST_PATH'].split('/', 3)
@@ -45,7 +47,5 @@ module Relay
         @_, @organization_id, @request_path = env['HTTP_REQUEST_PATH'].split('/', 3)
       end
     end
-
   end
-
 end

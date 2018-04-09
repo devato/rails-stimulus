@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :projects, through: :project_users
 
   def onboard_complete?
-    return true
+    true
     # return false unless !organizations.empty? && !projects.empty?
     # if onboard.nil?
     #   create_onboard!

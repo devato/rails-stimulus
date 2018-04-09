@@ -1,5 +1,4 @@
 class Dashboard::OrganizationsController < Dashboard::BaseController
-
   def index; end
 
   def new
@@ -18,5 +17,4 @@ class Dashboard::OrganizationsController < Dashboard::BaseController
       end
     end
   end
-
 end

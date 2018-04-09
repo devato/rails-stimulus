@@ -1,9 +1,7 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.feature 'Viewing Homepage', type: :feature do
-
   context 'As a visitor' do
-
     scenario 'I should see a welcome message' do
       visit root_path
       expect(page).to have_text('Homepage')
@@ -18,11 +16,9 @@ RSpec.feature 'Viewing Homepage', type: :feature do
       visit root_path
       expect(page).to have_text('Signup')
     end
-
   end
 
   context 'As an active user' do
-
     let(:user) { create(:user) }
 
     before do

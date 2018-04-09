@@ -1,26 +1,24 @@
 class OrganizationPresent
-
   def current_user(request)
-    User.find_by_id(request.session[:user_id])
+    User.find_by(id: request.session[:user_id])
   end
 
-  def self.matches?(request)
+  def self.matches?(_request)
     Current.organization.present?
   end
 end
 
 class OrganizationNotPresent
   def current_user(request)
-    User.find_by_id(request.session[:user_id])
+    User.find_by(id: request.session[:user_id])
   end
 
-  def self.matches?(request)
+  def self.matches?(_request)
     Current.organization.nil?
   end
 end
 
 Rails.application.routes.draw do
-
   root 'pages#home', constraints: OrganizationNotPresent
   root 'dashboard/index#index', constraints: OrganizationPresent
 
@@ -37,6 +35,4 @@ Rails.application.routes.draw do
     resources :organizations
     resources :projects
   end
-
 end
-

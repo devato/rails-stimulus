@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :supported_language do
     name  'Rails'
     image 'rails.svg'
-    active  true
+    active true
   end
 end

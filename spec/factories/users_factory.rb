@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :user do
     first_name    { FFaker::Name.first_name }
     last_name     { FFaker::Name.last_name }
@@ -8,5 +7,4 @@ FactoryBot.define do
     password_confirmation      { password }
     organizations { [create(:organization)] }
   end
-
 end

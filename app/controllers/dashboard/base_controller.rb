@@ -6,7 +6,6 @@ class Dashboard::BaseController < ApplicationController
   private
 
   def require_project
-    redirect_to :new_project if Current.user.projects.size == 0
+    redirect_to :new_project if Current.user.projects.empty?
   end
-
 end

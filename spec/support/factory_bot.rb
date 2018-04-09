@@ -11,4 +11,3 @@ RSpec.configure do |config|
     FactoryBot.find_definitions
   end
 end
-

@@ -1,8 +1,7 @@
 class Dashboard::ProjectsController < Dashboard::BaseController
-
-  before_action :set_project, only: [:edit, :update]
-  before_action :set_current_supported_languages, only: [:new, :edit, :create, :update]
-  before_action :set_presenter, only: [:new, :edit, :create, :update]
+  before_action :set_project, only: %i[edit update]
+  before_action :set_current_supported_languages, only: %i[new edit create update]
+  before_action :set_presenter, only: %i[new edit create update]
 
   skip_before_action :require_project
 
@@ -40,5 +39,4 @@ class Dashboard::ProjectsController < Dashboard::BaseController
   def set_supported_languages
     @supported_languages = SupportedLanguage.active
   end
-
 end

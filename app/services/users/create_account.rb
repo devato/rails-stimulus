@@ -41,7 +41,7 @@ module Users
       @organization = Organization.create(
         name: form.organization_name,
         default: true,
-        active: true,
+        active: true
       )
     end
 

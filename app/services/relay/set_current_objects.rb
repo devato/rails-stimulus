@@ -5,7 +5,7 @@ module Relay
     end
 
     def call
-      return broadcast(:not_logged_in) unless @user.present?
+      return broadcast(:not_logged_in) if @user.blank?
 
       transaction do
         set_current_user
@@ -23,10 +23,7 @@ module Relay
     end
 
     def set_organization_as_tenant
-      if Current.user.present?
-        Current.organization ||= Current.user.organizations.find_by(default: true)
-      end
+      Current.organization ||= Current.user.organizations.find_by(default: true) if Current.user.present?
     end
-
   end
 end

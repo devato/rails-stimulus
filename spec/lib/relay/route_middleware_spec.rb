@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 class MockRackApp
-
   attr_reader :request_body
 
   def initialize
@@ -11,17 +10,15 @@ class MockRackApp
   def call(env)
     @env = env
     @request_body = env['rack.input'].read
-    [200, {'Content-Type' => 'text/plain'}, ['OK']]
+    [200, { 'Content-Type' => 'text/plain' }, ['OK']]
   end
 
   def [](key)
     @env[key]
   end
-
 end
 
 describe Relay::RouteMiddleware, type: :middleware do
-
   let(:app)     { MockRackApp.new }
   let(:request) { Rack::MockRequest.new(subject) }
   let!(:organization) { create(:organization, name: 'findme') }
@@ -54,5 +51,4 @@ describe Relay::RouteMiddleware, type: :middleware do
       expect(Current.organization).to eq(organization)
     end
   end
-
 end

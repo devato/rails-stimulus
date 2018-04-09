@@ -1,9 +1,7 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.feature 'Onboard: Signup Spec', type: :feature do
-
   context 'As a visitor' do
-
     scenario 'I should see a signup link on the homepage' do
       visit root_path
       expect(page).to have_text('Signup')
@@ -39,7 +37,6 @@ RSpec.feature 'Onboard: Signup Spec', type: :feature do
   end
 
   context 'As an active user' do
-
     let(:user) { create(:user) }
 
     before do
@@ -54,7 +51,6 @@ RSpec.feature 'Onboard: Signup Spec', type: :feature do
     end
 
     context 'Given I have an existing project' do
-
       let(:project) { create(:project, organization: user.organizations.first) }
 
       before do
@@ -66,6 +62,5 @@ RSpec.feature 'Onboard: Signup Spec', type: :feature do
         expect(page).to have_text('Welcome')
       end
     end
-
   end
 end

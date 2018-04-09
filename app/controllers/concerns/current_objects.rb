@@ -1,9 +1,7 @@
 module CurrentObjects
-
   extend ActiveSupport::Concern
 
   included do
-
     set_current_tenant_through_filter
     before_action :set_current_objects
 
@@ -15,8 +13,5 @@ module CurrentObjects
     def set_current_supported_languages
       Current.supported_languages = SupportedLanguage.active
     end
-
   end
-
 end
-

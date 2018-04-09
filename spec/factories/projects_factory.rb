@@ -4,5 +4,4 @@ FactoryBot.define do
     organization  { create(:organization) }
     supported_language { create(:supported_language) }
   end
-
 end

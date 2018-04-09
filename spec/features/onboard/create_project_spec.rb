@@ -1,16 +1,13 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.feature 'Onboard: Create Project Spec', type: :feature do
-
   context 'As a visitor' do
-
     scenario 'I should be redirected to login' do
       visit new_project_path
       expect(page).to have_text('Sign in to your account')
     end
 
     context 'After registering' do
-
       let!(:lang) { create(:supported_language) }
 
       scenario 'I should see the new project form' do
@@ -30,9 +27,7 @@ RSpec.feature 'Onboard: Create Project Spec', type: :feature do
         end
         expect(page).to have_content('Successfully created project')
       end
-
     end
-
   end
 
   context 'As an active user' do
