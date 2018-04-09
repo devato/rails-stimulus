@@ -7,21 +7,10 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  has_one :onboard
-  has_many :organization_users
+  has_one :onboard, dependent: :destroy
+  has_many :organization_users, dependent: :destroy
   has_many :organizations, through: :organization_users
 
-  has_many :project_users
+  has_many :project_users, dependent: :destroy
   has_many :projects, through: :project_users
-
-  def onboard_complete?
-    true
-    # return false unless !organizations.empty? && !projects.empty?
-    # if onboard.nil?
-    #   create_onboard!
-    #   false
-    # else
-    #   onboard.complete?
-    # end
-  end
 end

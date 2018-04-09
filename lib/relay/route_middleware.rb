@@ -17,7 +17,7 @@ module Relay
     end
 
     def call(env)
-      set_request_data(env)
+      build_request_data(env)
       if @organization_id.present?
         if (Current.organization = Organization.find_by(slug: @organization_id))
           env['SCRIPT_NAME']  = "/#{@organization_id}"
@@ -36,7 +36,7 @@ module Relay
     # NOTE: capybara sets HTTP_REQUEST_PATH
     #       so added a check for it so no other
     #       customizations needed in specs.
-    def set_request_data(env)
+    def build_request_data(env)
       @_ = nil
       @organization_id = nil
       @request_path = nil

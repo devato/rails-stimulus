@@ -6,7 +6,7 @@ class Organization < ApplicationRecord
 
   has_many :user_organizations, dependent: :destroy
   has_many :users, through: :user_organizations
-  has_many :projects
+  has_many :projects, dependent: :destroy
 
-  scope :default, -> { where(default: true).first }
+  scope :default, -> { find_by(default: true) }
 end

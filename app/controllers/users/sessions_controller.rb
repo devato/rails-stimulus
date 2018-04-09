@@ -1,5 +1,6 @@
 class Users::SessionsController < Users::BaseController
   skip_before_action :require_login, except: [:destroy]
+  skip_before_action :redirect_to_dashboard, only: [:destroy]
 
   def index
     redirect_to login_path
