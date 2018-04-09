@@ -52,12 +52,12 @@ header#topnav
           - unless @onboarding
             li.dropdown.hide-phone
               a.nav-link.dropdown-toggle.waves-effect.waves-light.nav-user[data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"]
-                = Current.organization.name
+                = Current.organization.name.titleize
                 i.mdi.mdi-chevron-down
                 .dropdown-menu.dropdown-menu-right
                   - if Current.organizations.size > 0
                     - Current.organizations.each do |org|
-                        = link_to org.name, organization_home(org),
+                        = link_to org.name.titleize, organization_home(org),
                           class: 'dropdown-item'
                   = link_to :new_organization,
                     class: 'dropdown-item' do
