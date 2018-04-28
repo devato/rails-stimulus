@@ -13,14 +13,22 @@
         url: users_signups_path,
         method: :post,
         html: { class: 'form-horizontal' } do |f|
+        h4 Account
         .form-group
-          = f.input :name, input_html: { placeholder: 'Full Name' }
+          = f.input :name, input_html: { placeholder: 'Full Name', value: 'Troy Martin' }
         .form-group
-          = f.input :email, input_html: { placeholder: 'email@example.com' }
+          = f.input :email, input_html: { placeholder: 'email@example.com', value: 'troy@devato.com' }
         .form-group
-          = f.input :password, as: :password
+          = f.input :password, as: :password,
+            input_html: { value: '123123' }
         .form-group
-          = f.input :password_confirmation, as: :password
+          = f.input :password_confirmation, as: :password,
+            input_html: { value: '123123' }
+
+        h4 Organization
+        .form-group
+          = f.input :organization_name, label: 'Organization Name',
+            input_html: { placeholder: 'eg My Company', value: 'Devato' }
         .checkbox
           label
             = f.check_box :terms

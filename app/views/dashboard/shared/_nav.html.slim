@@ -21,9 +21,10 @@ header#topnav
                 ul.submenu
                   - if current_user.projects.size > 0
                     - current_user.projects.each do |p|
-                      li = link_to p.name, project_path(p)
+                      li = link_to p.name, project_path(p.slug)
                   - else
-                    li No projects
+                    li
+                      a No projects
                   li.divider
                   li
                     = link_to :new_project do
@@ -51,16 +52,16 @@ header#topnav
           - unless @onboarding
             li.dropdown.hide-phone
               a.nav-link.dropdown-toggle.waves-effect.waves-light.nav-user[data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"]
-                / = @organization.name
-                / i.mdi.mdi-chevron-down
-                / .dropdown-menu.dropdown-menu-right
-                /   - if @other_organizations.size > 0
-                /     - @other_organizations.each do |org|
-                /         = link_to org.name, root_path,
-                /           class: 'dropdown-item'
-                /   = link_to organization_root_path(session[:organization]),
-                /     class: 'dropdown-item' do
-                /      | Create Organization
+                = Current.organization.name.titleize
+                i.mdi.mdi-chevron-down
+                .dropdown-menu.dropdown-menu-right
+                  - if Current.organizations.size > 0
+                    - Current.organizations.each do |org|
+                        = link_to org.name.titleize, organization_home(org),
+                          class: 'dropdown-item'
+                  = link_to :new_organization,
+                    class: 'dropdown-item' do
+                     | Create Organization
           li.dropdown
             a.nav-link.dropdown-toggle.waves-effect.waves-light.nav-user[data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"]
               = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle'
@@ -83,7 +84,7 @@ header#topnav
                 i.ti-lock
                 span
                   | Lock Screen
-              = link_to :logout, method: :post, class: 'dropdown-item notify-item' do
+              = link_to logout_path(script_name: false), method: :post, class: 'dropdown-item notify-item' do
                 i.ti-power-off
                 span
                   | Logout

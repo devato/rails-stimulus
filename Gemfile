@@ -16,24 +16,30 @@ gem 'foreman', '~> 0.84'
 gem 'friendly_id', '~> 5.2'
 gem 'pg', '~> 1.0', '< 2.0'
 gem 'puma', '~> 3.11'
-gem 'rails', '~> 5.2.0.rc2'
+gem 'rails', '~> 5.2'
 gem 'rectify', '~> 0.11'
 gem 'rubocop', '~> 0.54'
 gem 'sidekiq', '~> 5.1'
-gem 'simple_form', '~> 3.5'
+gem 'simple_form', '~> 4.0'
 gem 'slim-rails', '~> 3.1'
 gem 'sorcery', '~> 0.11'
 gem 'webpacker', github: 'rails/webpacker'
 
 group :development, :test do
   gem 'byebug', '~> 10.0', platforms: %i[mri mingw x64_mingw]
-  gem 'database_cleaner', '~> 1.6'
   gem 'dotenv-rails', '~> 2.2'
   gem 'factory_bot', '~> 4.8'
+  gem 'ffaker', '~> 2.9.0'
+end
+
+group :test do
+  gem 'capybara-selenium', '~> 0.0.6'
+  gem 'database_cleaner', '~> 1.6'
   gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do
+  gem 'bullet', '~> 5.0'
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'listen', '~> 3.1', '< 3.2'
   gem 'rack-livereload', '~> 0.3'

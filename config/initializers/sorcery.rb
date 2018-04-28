@@ -133,10 +133,6 @@ Rails.application.config.sorcery.configure do |config|
   # config.google.user_info_mapping = {:email => "email", :username => "name"}
   # config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
-  # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.
-  # The callback URL "can't contain a query string or invalid special characters", see: https://docs.microsoft.com/en-us/azure/active-directory/active-directory-v2-limitations#restrictions-on-redirect-uris
-  # More information at https://graph.microsoft.io/en-us/docs
-  #
   # config.microsoft.key = ""
   # config.microsoft.secret = ""
   # config.microsoft.callback_url = "http://0.0.0.0:3000/oauth/callback/microsoft"

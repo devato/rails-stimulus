@@ -9,9 +9,7 @@ module Users
       return broadcast(:not_found) unless login_user
 
       transaction do
-        notify_admins
-        audit_event
-        send_user_details_to_crm
+        set_current_objects
       end
 
       broadcast(:ok, @user)
@@ -19,23 +17,14 @@ module Users
 
     private
 
-    attr_reader :form
+    attr_reader :form, :user
 
     def login_user
       @user = login(@form.email, @form.password)
-      Current.user = @user
     end
 
-    def notify_admins
-      # ...
-    end
-
-    def audit_event
-      # ...
-    end
-
-    def send_user_details_to_crm
-      # ...
+    def set_current_objects
+      Relay::SetCurrentObjects.call(user)
     end
   end
 end

@@ -1,5 +1,6 @@
 class Users::SessionsController < Users::BaseController
   skip_before_action :require_login, except: [:destroy]
+  skip_before_action :redirect_to_dashboard, only: [:destroy]
 
   def index
     redirect_to login_path
@@ -12,7 +13,7 @@ class Users::SessionsController < Users::BaseController
   def create
     @form = Users::LoginForm.from_params(params)
     Users::Login.call(@form) do
-      on(:ok)      { redirect_back_or_to root_path }
+      on(:ok)      { redirect_back_or_to organization_home }
       on(:invalid) { render :new }
       on(:not_found) do
         flash[:alert] = 'Username or password invalid'

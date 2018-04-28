@@ -66,3 +66,7 @@
 // @import "custom/pages/invoice";
 // @import "custom/pages/timeline";
 // @import "custom/pages/theme_docs";
+
+abbr[title], abbr[data-original-title] {
+  text-decoration: none!important;
+}

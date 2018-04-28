@@ -1,0 +1,20 @@
+.row
+  .col-sm-8.offset-sm-2
+    h4.header-title.m-t-0.m-b-20 Create Organization
+
+    .panel.panel-default.panel-fill
+      .panel-heading
+        h3.panel-title New Organization
+      .panel-body
+        p Organizations give structure to your projects and teams.
+        br/
+        .organization-form.row
+          .col
+            = simple_form_for @org_form,
+              method: :post,
+              html: { class: 'form-horizontal' } do |f|
+
+              = f.input :name, input_html: { placeholder: 'eg. My Company' }
+
+              .form-group
+                = f.button :submit, 'Continue', class: 'btn btn-primary'

@@ -1,10 +1,9 @@
 .row
   .col-sm-12
     h4.header-title.m-t-0.m-b-20
-      | Welcome #{current_user.name}!
-      = Current.organization
+      | Welcome #{current_user.first_name}!
 
-= render 'event_counts'
+= render 'error_counts'
 
 .row
   .col-lg-8

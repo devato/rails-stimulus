@@ -59,8 +59,8 @@ Rails.application.configure do
     Bullet.tap do |bullet|
       bullet.enable = true
       bullet.alert = false
-      bullet.bullet_logger = true
-      bullet.console = false
+      bullet.bullet_logger = false
+      bullet.console = true
       bullet.growl = false
       bullet.rails_logger = true
       bullet.add_footer = false

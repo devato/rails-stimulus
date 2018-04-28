@@ -1,1 +1,32 @@
-New
+.row
+  .col-sm-8.offset-sm-2
+    h4.header-title.m-t-0.m-b-20 Create Project
+
+    .panel.panel-default.panel-fill
+      .panel-heading
+        h3.panel-title New Project
+      .panel-body
+        p Events are scoped to a specific project in your organization. For example, you might have separate projects your API server and frontend client.
+
+
+        hr/
+        .organization-form.row
+          .col
+            = simple_form_for @project_form,
+              method: :post,
+              html: { class: 'form-horizontal' } do |f|
+
+              p
+                strong Choose a language or framework:
+              br/
+              = render 'language_select', form: f
+
+              = f.input :organization_id, as: :hidden,
+                input_html: { value: Current.organization.id }
+
+              = f.input :name, label: false,
+                input_html: { placeholder: 'Project Name' }
+
+              .form-group
+                = f.button :submit, 'Continue', class: 'btn btn-primary'
+                = link_to 'Cancel', organization_home, class: 'btn btn-secondary float-right'
