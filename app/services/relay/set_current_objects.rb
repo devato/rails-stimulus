@@ -1,7 +1,8 @@
 module Relay
   class SetCurrentObjects < Rectify::Command
-    def initialize(user)
+    def initialize(user, params = {})
       @user = user
+      @params = params
     end
 
     def call
@@ -26,7 +27,7 @@ module Relay
     end
 
     def set_organization
-      Current.organization ||= Current.user.organizations.find_by(default: true) if Current.user.present?
+      Current.organization ||= Current.user.organizations.find_by(default: true)
     end
 
     def set_organizations
