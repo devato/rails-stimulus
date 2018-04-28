@@ -24,7 +24,6 @@ gem 'simple_form', '~> 4.0'
 gem 'slim-rails', '~> 3.1'
 gem 'sorcery', '~> 0.11'
 gem 'webpacker', github: 'rails/webpacker'
-gem 'honeybadger', '~> 3.1'
 
 group :development, :test do
   gem 'byebug', '~> 10.0', platforms: %i[mri mingw x64_mingw]
