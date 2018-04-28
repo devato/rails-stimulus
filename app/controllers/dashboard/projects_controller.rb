@@ -31,7 +31,7 @@ class Dashboard::ProjectsController < Dashboard::BaseController
   private
 
   def set_project
-    @project = Project.friendly.find(params[:id])
+    @project = Project.friendly.find(params[:project_id])
   end
 
   def set_presenter

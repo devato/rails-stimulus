@@ -1,3 +1,10 @@
-.row
-  .col-md-12
-    h1 = @project.name
+.row.project
+  .col-md-6
+    h1.project__title = @project.name
+  .col-md-6.text-right
+    button.btn.btn-icon.btn-default
+     i.fa.fa-cog>
+     | Project Settings
+
+
+

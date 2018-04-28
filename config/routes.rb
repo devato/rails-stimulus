@@ -1,3 +1,4 @@
+# NOTE: helper classes for org constraints
 class OrganizationPresent
   def current_user(request)
     User.find_by(id: request.session[:user_id])
@@ -8,6 +9,7 @@ class OrganizationPresent
   end
 end
 
+# NOTE: helper classes for org constraints
 class OrganizationNotPresent
   def current_user(request)
     User.find_by(id: request.session[:user_id])
@@ -18,6 +20,7 @@ class OrganizationNotPresent
   end
 end
 
+# Routes
 Rails.application.routes.draw do
   root 'pages#home', constraints: OrganizationNotPresent
   root 'dashboard/index#index', constraints: OrganizationPresent
@@ -33,6 +36,6 @@ Rails.application.routes.draw do
   scope module: :dashboard do
     get '/:organization_id' => 'index#index', as: :organization_root
     resources :organizations
-    resources :projects
+    resources :projects, param: :project_id
   end
 end

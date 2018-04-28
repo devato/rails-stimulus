@@ -16,7 +16,8 @@ header#topnav
                     i.ti-home
               li.has-submenu
                 a[href="#"]
-                  span Projects
+
+                  span = @project.present? ? @project.name : 'Projects'
                   i.mdi.mdi-chevron-down
                 ul.submenu
                   - if current_user.projects.size > 0
@@ -32,7 +33,7 @@ header#topnav
               li.has-submenu
                 a[href="#"]
                   span
-                    | Issues
+                    | Statistics
               li.has-submenu
                 a[href="#"]
                   span
