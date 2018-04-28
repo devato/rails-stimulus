@@ -1,6 +1,6 @@
 .card-box
   h6.m-t-0
-    | Latest Issues
+    | Latest Errors
   .table-responsive
     table.table.table-hover.mails.m-0.table.table-actions-bar
       thead
@@ -18,111 +18,5 @@
           th
             | Start Date
       tbody
-        tr
-          td
-            .checkbox.checkbox-primary.m-r-15
-              input#checkbox2[type="checkbox"]
-              label[for="checkbox2"]
-            = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle thumb-sm'
-          td
-            |  Tomaslau
-          td
-            a.text-muted[href="#"]
-              | tomaslau@dummy.com
-          td
-            b
-              a.text-dark[href=""]
-                b
-                  | 356
-          td
-            |  01/11/2003
-        tr
-          td
-            .checkbox.checkbox-primary.m-r-15
-              input#checkbox1[type="checkbox"]
-              label[for="checkbox1"]
-            = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle thumb-sm'
-          td
-            |  Chadengle
-          td
-            a.text-muted[href="#"]
-              | chadengle@dummy.com
-          td
-            b
-              a.text-dark[href=""]
-                b
-                  | 568
-          td
-            |  01/11/2003
-        tr
-          td
-            .checkbox.checkbox-primary.m-r-15
-              input#checkbox3[type="checkbox"]
-              label[for="checkbox3"]
-            = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle thumb-sm'
-          td
-            |  Stillnotdavid
-          td
-            a.text-muted[href="#"]
-              | stillnotdavid@dummy.com
-          td
-            b
-              a.text-dark[href=""]
-                b
-                  | 201
-          td
-            |  12/11/2003
-        tr
-          td
-            .checkbox.checkbox-primary.m-r-15
-              input#checkbox4[type="checkbox"]
-              label[for="checkbox4"]
-            = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle thumb-sm'
-          td
-            |  Kurafire
-          td
-            a.text-muted[href="#"]
-              | kurafire@dummy.com
-          td
-            b
-              a.text-dark[href=""]
-                b
-                  | 56
-          td
-            |  14/11/2003
-        tr
-          td
-            .checkbox.checkbox-primary.m-r-15
-              input#checkbox5[type="checkbox"]
-              label[for="checkbox5"]
-            = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle thumb-sm'
-          td
-            |  Shahedk
-          td
-            a.text-muted[href="#"]
-              | shahedk@dummy.com
-          td
-            b
-              a.text-dark[href=""]
-                b
-                  | 356
-          td
-            |  20/11/2003
-        tr
-          td
-            .checkbox.checkbox-primary.m-r-15
-              input#checkbox6[type="checkbox"]
-              label[for="checkbox6"]
-            = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle thumb-sm'
-          td
-            |  Adhamdannaway
-          td
-            a.text-muted[href="#"]
-              | adhamdannaway@dummy.com
-          td
-            b
-              a.text-dark[href=""]
-                b
-                  | 956
-          td
-            |  24/11/2003
+        - 5.times do
+          = render 'shared/tables/error_row'
