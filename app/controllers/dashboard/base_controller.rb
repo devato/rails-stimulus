@@ -8,4 +8,5 @@ class Dashboard::BaseController < ApplicationController
   def require_project
     redirect_to :new_project if Current.user.projects.empty?
   end
+
 end

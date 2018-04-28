@@ -2,17 +2,13 @@
   h6.m-t-0
     | Latest Errors
   .table-responsive
-    table.table.table-hover.mails.m-0.table.table-actions-bar
+    table.table.table-hover.mails.m-0.table.table-actions-bar.r-errors
       thead
         tr
-          th
-            | Error
-          th
-            | Email
-          th
-            | Products
-          th
-            | Start Date
+          th Error
+          th Env
+          th Count
+          th Last
       tbody
         - 5.times do
-          = render 'shared/tables/error_row'
+          = render 'dashboard/shared/tables/error_row'

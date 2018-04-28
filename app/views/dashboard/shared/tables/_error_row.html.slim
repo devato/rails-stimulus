@@ -1,18 +1,15 @@
-tr data-id="#{1}"
+tr.r-errors__tr data-id="#{1}"
+  td.r-errors__td
+    .r-errors__msg_head
+      | EXPORT_FAILED:
+    .r-errors__msg_body
+      | Resource Rainbow Background Vector Design couldn't be exported. freevector didn't give us a response we understood
   td
-    .checkbox.checkbox-primary.m-r-15
-      input#checkbox2[type="checkbox"]
-      label[for="checkbox2"]
-    = image_tag asset_pack_path('images/users/avatar-1.jpg'), class: 'rounded-circle thumb-sm'
-  td
-    |  Tomaslau
-  td
-    a.text-muted[href="#"]
-      | tomaslau@dummy.com
+    span.badge.badge-danger.badge-pill prod
+  td 12
+
   td
     b
       a.text-dark[href=""]
-        b
-          | 356
-  td
-    |  01/11/2003
+        b 5mins
+

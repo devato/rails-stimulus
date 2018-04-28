@@ -1,0 +1,13 @@
+.card-box
+  h6.m-t-0 Projects
+  .table-responsive
+    table.table.table-hover.mails.m-0.table.table-actions-bar.r-errors
+      thead
+        tr
+          th Project
+          th Errors
+      tbody
+        - @projects.each do |project|
+          tr
+            td = project.name_link
+            td = project.id

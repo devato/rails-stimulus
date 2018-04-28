@@ -1,3 +1,5 @@
 class Dashboard::IndexController < Dashboard::BaseController
-  def index; end
+  def index
+    @projects = ProjectDecorator.decorate_collection(Current.user.projects)
+  end
 end
