@@ -55,6 +55,12 @@ jobs:
             - ./vendor/bundle
           key: relay-v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+      - run:
+          name: Config files
+          command: |
+            cp config/database.yml.example config/database.yml
+            cp .env.example .env.test
+
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
