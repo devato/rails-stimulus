@@ -1,6 +1,6 @@
 .card-box
   h6.m-t-0
-    | Latest Errors
+    | Latest Issues
   .table-responsive
     table.table.table-hover.mails.m-0.table.table-actions-bar.r-errors
       thead
@@ -11,4 +11,4 @@
           th Last
       tbody
         - 5.times do
-          = render 'dashboard/shared/tables/error_row'
+          = render 'dashboard/shared/tables/issue_row'

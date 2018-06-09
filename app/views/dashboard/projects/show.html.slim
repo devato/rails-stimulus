@@ -1,10 +1,46 @@
 .row.project
   .col-md-6
-    h1.project__title = @project.name
-  .col-md-6.text-right
-    button.btn.btn-icon.btn-default
-     i.fa.fa-cog>
-     | Project Settings
+    h3.project__title = @project.name
+  / .col-md-6.text-right
+  /   button.btn.btn-icon.btn-default
+  /    i.fa.fa-cog>
+  /    | Project Settings
 
 
-
+.row.project__issues
+  .col-md-12
+    .card-box
+      ul.nav.nav-tabs.tabs-bordered
+        li.nav-item
+          a.nav-link[href="#home-b1" data-toggle="tab" aria-expanded="false"]
+            |  Issues
+        li.nav-item
+          a.nav-link[href="#profile-b1" data-toggle="tab" aria-expanded="true"]
+            |  Profile
+        li.nav-item
+          a.nav-link[href="#messages-b1" data-toggle="tab" aria-expanded="false"]
+            |  Messages
+        li.nav-item
+          a.nav-link.active[href="#settings-b1" data-toggle="tab" aria-expanded="false"]
+            |  Settings
+      .tab-content
+        #home-b1.tab-pane.fade
+          p
+            | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+          p
+            | Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+        #profile-b1.tab-pane.fade
+          p
+            | Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+          p
+            | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+        #messages-b1.tab-pane.fade
+          p
+            | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+          p
+            | Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+        #settings-b1.tab-pane.fade.active.show
+          p
+            | Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+          p
+            | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.row.project__issues

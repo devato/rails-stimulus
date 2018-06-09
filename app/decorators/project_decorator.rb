@@ -14,4 +14,8 @@ class ProjectDecorator < ApplicationDecorator
     link_to object.name, project_path(object)
   end
 
+  def name
+    object.name.titleize
+  end
+
 end
