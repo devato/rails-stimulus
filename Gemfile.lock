@@ -385,6 +385,8 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    rspec_junit_formatter (0.4.1)
+      rspec-core (>= 2, < 4, != 2.12.0)
     rubocop (0.55.0)
       parallel (~> 1.10)
       parser (>= 2.5)
@@ -501,6 +503,7 @@ DEPENDENCIES
   ransack!
   rectify (~> 0.11)
   rspec-rails (~> 3.7)
+  rspec_junit_formatter (~> 0.4)
   rubocop (~> 0.54)
   sidekiq (~> 5.1)
   simple_form (~> 4.0)

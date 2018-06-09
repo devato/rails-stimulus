@@ -38,6 +38,7 @@ group :test do
   gem 'capybara-selenium', '~> 0.0.6'
   gem 'database_cleaner', '~> 1.6'
   gem 'rspec-rails', '~> 3.7'
+  gem 'rspec_junit_formatter', '~> 0.4'
 end
 
 group :development do
