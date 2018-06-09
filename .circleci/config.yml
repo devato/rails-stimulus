@@ -62,8 +62,10 @@ jobs:
             cp .env.example .env.test
 
       # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      - run: bundle exec rake db:create db:schema:load
+
+      # test assets
+      - run: NODE_ENV=test bundle exec rails webpacker:compile
 
       # run tests!
       - run:
