@@ -23,7 +23,7 @@ module Relay
     attr_reader :user, :organization
 
     def set_current_user
-      Current.user = user
+      Current.user = UserDecorator.new(user)
     end
 
     def set_organization
