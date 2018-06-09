@@ -27,12 +27,14 @@ module Relay
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-    config.generators do |generate|
-      generate.helper false
-      generate.assets false
-      generate.view_specs false
-      generate.system_tests false
-      generate.orm :active_record, primary_key_type: :uuid
+    config.generators do |g|
+      g.template_engine :slim
+      g.helper          false
+      g.assets          false
+      g.test_framework  :rspec, fixture: false
+      g.view_specs      false
+      g.system_tests    false
+      g.orm :active_record, primary_key_type: :uuid
     end
 
     config.middleware.use RouteMiddleware
