@@ -38,4 +38,12 @@ Rails.application.routes.draw do
     resources :organizations
     resources :projects, param: :project_id
   end
+
+  namespace :account do
+    resource :settings, only: %i[update] do
+      collection do
+        get '/', action: :edit
+      end
+    end
+  end
 end

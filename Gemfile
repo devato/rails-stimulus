@@ -40,6 +40,7 @@ group :test do
   gem 'database_cleaner', '~> 1.6'
   gem 'rspec-rails', '~> 3.7'
   gem 'rspec_junit_formatter', '~> 0.4'
+  gem 'chromedriver-helper', '~> 1.2'
 end
 
 group :development do
