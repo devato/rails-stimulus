@@ -65,7 +65,12 @@ jobs:
       - run: bundle exec rake db:create db:schema:load
 
       # test assets
-      - run: bundle exec rails webpacker:compile
+
+      - run:
+          name: Setup test assets
+          command: |
+            yarn
+            bundle exec rails webpacker:compile
 
       # run tests!
       - run:
