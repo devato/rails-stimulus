@@ -13,10 +13,13 @@ import { definitionsFromContext } from "stimulus/webpack-helpers"
 import Rails from 'rails-ujs';
 import Turbolinks from 'turbolinks';
 import 'bootstrap/dist/js/bootstrap';
+import * as ActiveStorage from "activestorage"
+
 
 // Setup rails and turbolinks
 Rails.start();
 Turbolinks.start();
+ActiveStorage.start()
 
 // Setup Stimulus
 const application = Application.start()
