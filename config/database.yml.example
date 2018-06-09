@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
+  prepared_statements: false
+
+development:
+  <<: *default
+  url: <%= (ENV['DATABASE_URL'] + '_development') if ENV['DATABASE_URL'].present?%>
+
+test: &test
+  <<: *default
+  url: <%= (ENV['DATABASE_URL'] + '_test') if ENV['DATABASE_URL'].present?%>
+
+production:
+  <<: *default
+
+cucumber:
+  <<: *test
