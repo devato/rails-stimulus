@@ -32,11 +32,10 @@ jobs:
       - restore_cache:
           keys:
           - relay-v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
           - relay-v1-dependencies-
 
       - run:
-          name: install dependencies
+          name: Install Bundle dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
@@ -54,7 +53,7 @@ jobs:
             - yarn-packages-master
             - yarn-packages-
       - run:
-          name: Install Dependencies
+          name: Install Yarn dependencies
           command: yarn install
 
       - save_cache:
@@ -81,7 +80,7 @@ jobs:
             cp config/database.yml.example config/database.yml
             cp .env.example .env.test
 
-      - run: bundle exec rake db:create db:schema:load
+      - run: bundle exec rails db:create db:schema:load
 
       # Test assets
       - run:
@@ -90,7 +89,7 @@ jobs:
 
       # run tests!
       - run:
-          name: run tests
+          name: Rspec test suite
           command: |
             mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
