@@ -36,16 +36,6 @@ jobs:
           - relay-v1-dependencies-
 
       - run:
-          name: Start CitusDB container
-          command: |
-            set -x
-            docker-compose up -d
-
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      - run:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
@@ -55,22 +45,48 @@ jobs:
             - ./vendor/bundle
           key: relay-v1-dependencies-{{ checksum "Gemfile.lock" }}
 
+      # Yarn cache
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-packages-{{ .Branch }}
+            - yarn-packages-master
+            - yarn-packages-
+      - run:
+          name: Install Dependencies
+          command: yarn install
+
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules/
+
+      # Database setup
+      - run:
+          name: Start CitusDB container
+          command: |
+            set -x
+            docker-compose up -d
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+
       - run:
           name: Config files
           command: |
             cp config/database.yml.example config/database.yml
             cp .env.example .env.test
 
-      # Database setup
       - run: bundle exec rake db:create db:schema:load
 
-      # test assets
-
+      # Test assets
       - run:
           name: Setup test assets
-          command: |
-            yarn
-            bundle exec rails webpacker:compile
+          command: bundle exec rails webpacker:compile
 
       # run tests!
       - run:
