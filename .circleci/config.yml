@@ -65,7 +65,7 @@ jobs:
       - run: bundle exec rake db:create db:schema:load
 
       # test assets
-      - run: NODE_ENV=test bundle exec rails webpacker:compile
+      - run: bundle exec rails webpacker:compile
 
       # run tests!
       - run:
