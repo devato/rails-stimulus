@@ -54,14 +54,7 @@ class User::CreateAccount < Rectify::Command
   end
 
   def set_default_avatar
-    return if user.avatar.attached?
-    user.avatar.attach(io: File.open('lib/assets/missing.png'),
-                  filename: 'missing.png',
-                  content_type: 'image/png')
-  # NOTE: prevent io stream errors in rspec
-  # https://github.com/NickolasVashchenko/stopgap_13632
-  rescue IOError
-    Thread.current.purge_interrupt_queue
+    @user.set_default_avatar
   end
 
   def set_default_settings
