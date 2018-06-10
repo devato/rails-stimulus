@@ -13,6 +13,7 @@ module Users
         connect_user_and_organization
         login_user
         set_current_objects
+        set_default_avatar
         notify_admins
         audit_event
         send_user_details_to_crm
@@ -56,6 +57,17 @@ module Users
 
     def set_current_objects
       Relay::SetCurrentObjects.call(user)
+    end
+
+    def set_default_avatar
+      return if avatar.attached?
+      avatar.attach(io: File.open('lib/assets/missing.png'),
+                    filename: 'missing.png',
+                    content_type: 'image/png')
+    # NOTE: prevent io stream errors in rspec
+    # https://github.com/NickolasVashchenko/stopgap_13632
+    rescue IOError
+      Thread.current.purge_interrupt_queue
     end
 
     def notify_admins

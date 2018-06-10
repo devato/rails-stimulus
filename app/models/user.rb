@@ -19,17 +19,4 @@ class User < ApplicationRecord
   has_many :project_users, dependent: :destroy
   has_many :projects, through: :project_users
 
-  after_create :set_default_avatar
-
-  def set_default_avatar
-    return if avatar.attached?
-    avatar.attach(io: File.open('lib/assets/missing.png'),
-                  filename: 'missing.png',
-                  content_type: 'image/png')
-  # NOTE: prevent io stream errors in rspec
-  # https://github.com/NickolasVashchenko/stopgap_13632
-  rescue IOError
-    Thread.current.purge_interrupt_queue
-  end
-
 end

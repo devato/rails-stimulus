@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_060321) do
+ActiveRecord::Schema.define(version: 2018_06_10_060109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -107,25 +107,14 @@ ActiveRecord::Schema.define(version: 2018_06_10_060321) do
     t.index ["name"], name: "index_supported_languages_on_name"
   end
 
-  create_table "user_notifications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "user_id"
-    t.boolean "project_alerts"
-    t.boolean "weekly_reports"
-    t.string "deploy_notifications"
-    t.boolean "my_activity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_notifications_on_user_id"
-  end
-
-  create_table "user_preferences", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "user_settings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "user_id"
     t.string "language"
     t.string "timezone"
     t.boolean "twenty_four_hr_clock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_preferences_on_user_id"
+    t.index ["user_id"], name: "index_user_settings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -141,6 +130,5 @@ ActiveRecord::Schema.define(version: 2018_06_10_060321) do
 
   add_foreign_key "active_organizations", "organizations"
   add_foreign_key "active_organizations", "users"
-  add_foreign_key "user_notifications", "users"
-  add_foreign_key "user_preferences", "users"
+  add_foreign_key "user_settings", "users"
 end

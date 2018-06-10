@@ -21,7 +21,6 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'rectify', '~> 0.12'
-gem 'reform', "~> 2.2"
 gem 'rubocop', '~> 0.57'
 gem 'sidekiq', '~> 5.1'
 gem 'simple_form', '~> 4.0'
