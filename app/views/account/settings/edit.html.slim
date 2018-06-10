@@ -1,0 +1,38 @@
+.m-t-30
+  ul.nav.nav-tabs.tabs-bordered
+    li.nav-item
+      = link_to 'Account', account_settings_path(script_name: false), class: 'nav-link active'
+    li.nav-item
+      = link_to 'Notifications', account_settings_path(script_name: false), class: 'nav-link'
+
+  .tab-content
+    = simple_form_for @account_form,
+      url: account_settings_path(script_name: false),
+      method: :put do |f|
+      #profile-b1.tab-pane.active
+        .panel.panel-default.panel-fill
+          .panel-heading
+            h3.panel-title
+              | Account Details
+          .panel-body
+            .form-group
+              = f.input :full_name,
+                input_html: { class: 'form-control', value: Current.user.full_name }
+            .form-group
+              = f.input :email,
+                input_html: { class: 'form-control', value: Current.user.email }
+
+        .panel.panel-default.panel-fill
+          .panel-heading
+            h3.panel-title
+              | Preferences
+          .panel-body
+            .form-group
+              = f.input :language,
+                as: :select,
+                collection: [['English', 'en']],
+                input_html: { class: 'form-control', value: Current.user.email }
+            .form-group
+              = f.input :time_zone, priority: /US/
+
+      = f.submit 'Save', class: 'btn btn-primary btn-lg'

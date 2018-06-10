@@ -31,4 +31,11 @@ describe UserDecorator, type: :decorator do
     end
   end
 
+  describe '.full_name' do
+    subject(:full_name) { described_class.new(user).full_name }
+    it 'should return first name followed by last name' do
+      expect(full_name).to eq("#{user.first_name} #{user.last_name}")
+    end
+  end
+
 end
