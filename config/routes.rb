@@ -41,9 +41,10 @@ Rails.application.routes.draw do
 
   namespace :account do
     resource :settings, only: %i[update] do
-      collection do
-        get '/', action: :edit
-      end
+      collection { get '/', action: :edit }
+    end
+    resource :notifications, only: %i[update] do
+      collection { get '/', action: :edit }
     end
   end
 end

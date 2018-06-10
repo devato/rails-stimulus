@@ -1,9 +1,9 @@
 .m-t-30
   ul.nav.nav-tabs.tabs-bordered
     li.nav-item
-      = link_to 'Account', account_settings_path(script_name: false), class: 'nav-link active'
+      = link_to 'Account', account_settings_path(script_name: false), class: 'nav-link'
     li.nav-item
-      = link_to 'Notifications', account_notifications_path(script_name: false), class: 'nav-link'
+      = link_to 'Notifications', account_notifications_path(script_name: false), class: 'nav-link active'
 
   .tab-content
     = simple_form_for @account_form,
