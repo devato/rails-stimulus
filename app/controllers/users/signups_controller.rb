@@ -6,13 +6,16 @@ class Users::SignupsController < Users::BaseController
   end
 
   def new
-    @signup_form = Users::SignupForm.new
+    @signup_form = User::SignupForm.new
   end
 
   def create
-    @signup_form = Users::SignupForm.from_params(params)
-    Users::CreateAccount.call(@signup_form) do
-      on(:ok)      { redirect_back_or_to organization_home }
+    @signup_form = User::SignupForm.from_params(params)
+    User::CreateAccount.call(@signup_form) do
+      on(:ok) do |user|
+        @user = auto_login(user)
+        redirect_back_or_to organization_home
+      end
       on(:invalid) { render :new }
     end
   end

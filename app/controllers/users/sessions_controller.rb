@@ -7,12 +7,12 @@ class Users::SessionsController < Users::BaseController
   end
 
   def new
-    @form = Users::LoginForm.new
+    @form = User::LoginForm.new
   end
 
   def create
-    @form = Users::LoginForm.from_params(params)
-    Users::Login.call(@form) do
+    @form = User::LoginForm.from_params(params)
+    User::Login.call(@form) do
       on(:ok)      { redirect_back_or_to organization_home }
       on(:invalid) { render :new }
       on(:not_found) do

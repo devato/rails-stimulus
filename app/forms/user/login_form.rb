@@ -1,4 +1,4 @@
-class Users::LoginForm < Rectify::Form
+class User::LoginForm < Rectify::Form
   attribute :email, String
   attribute :password, String
   attribute :remember_me, Boolean

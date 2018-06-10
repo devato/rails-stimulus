@@ -2,28 +2,35 @@ require 'rails_helper'
 
 describe User::CreateAccount, type: :service do
   let(:new_user) { build(:user) }
-  let(:signup_form) { Users::SignupForm.from_params() }
+  let(:signup_form) {
+    User::SignupForm.from_params({
+      signup: {
+        name: 'Test Johnson',
+        email: 'test@johnson.com',
+        password: 'password',
+        password_confirmation: 'password',
+        organization_name: 'Test Org',
+        terms: 1
+      }
+    })
+  }
 
-  # @signup_form = Users::SignupForm.from_params(params)
-  # Users::CreateAccount.call(@signup_form) do
-  #   on(:ok)      { redirect_back_or_to organization_home }
-  #   on(:invalid) { render :new }
-  # end
-  # subject(:create) { described_class.ne }
+  subject(:create_user) { described_class.call(signup_form) }
 
-  # describe ':after_create' do
-  #   it 'should call :set_default_avatar' do
-  #     expect(new_user).to receive(:set_default_avatar)
-  #     new_user.save
-  #   end
-  #   it 'should set add an attachment' do
-  #     expect { new_user.save }
-  #       .to change { ActiveStorage::Attachment.count }.by(1)
-  #   end
-  #   it 'should set the attachment as missing.png' do
-  #     new_user.save
-  #     expect(new_user.reload.avatar.filename.base).to eq('missing')
-  #   end
-  # end
+  describe '.call' do
+    it 'should add an attachment' do
+      expect { create_user }
+        .to change { ActiveStorage::Attachment.count }.by(1)
+    end
+    it 'should set the avatar attachment as missing.png' do
+      create_user
+      expect(User.last.avatar.filename.base).to eq('missing')
+    end
+
+    it 'should create default settings' do
+      expect { create_user }
+        .to change { User::Setting.count }.by(1)
+    end
+  end
 
 end

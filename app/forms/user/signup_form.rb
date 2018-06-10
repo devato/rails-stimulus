@@ -1,4 +1,4 @@
-class Users::SignupForm < Rectify::Form
+class User::SignupForm < Rectify::Form
   attribute :name, String
   attribute :email, String
   attribute :password, String

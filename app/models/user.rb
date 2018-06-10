@@ -10,8 +10,7 @@ class User < ApplicationRecord
 
   has_one :onboard, dependent: :destroy
   has_one :active_organization, dependent: :destroy
-  has_one :user_preference, dependent: :destroy
-  has_one :user_notifications, dependent: :destroy
+  has_one :settings, dependent: :destroy, class_name: 'User::Setting'
 
   has_many :organization_users, dependent: :destroy
   has_many :organizations, through: :organization_users
