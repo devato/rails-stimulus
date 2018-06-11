@@ -31,7 +31,8 @@
               = f.input :language,
                 as: :select,
                 collection: [['English', 'en']],
-                input_html: { class: 'form-control', value: Current.user.email }
+                selected: Current.user.settings.language,
+                input_html: { class: 'form-control' }
             .form-group
               = f.input :time_zone, priority: /US/
 

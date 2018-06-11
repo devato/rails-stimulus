@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Viewing Homepage', type: :feature do
+feature 'Viewing Homepage', type: :feature do
   context 'As a visitor' do
     scenario 'I should see a welcome message' do
       visit root_path

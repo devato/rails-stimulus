@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Onboard: Create Project Spec', type: :feature do
+feature 'Onboard: Create Project Spec', js: true, type: :feature do
   context 'As a visitor' do
     scenario 'I should be redirected to login' do
       visit new_project_path

@@ -1,7 +1,7 @@
 module Features
   module LoginHelper
     def login(user, password = 'password')
-      user.update password: password
+      user.update(password: password)
       page.driver.post users_sessions_path, email: user.email, password: password
       visit root_url
     end

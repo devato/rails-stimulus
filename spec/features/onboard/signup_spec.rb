@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Onboard: Signup Spec', type: :feature do
+feature 'Onboard: Signup Spec', type: :feature do
   context 'As a visitor' do
     scenario 'I should see a signup link on the homepage' do
       visit root_path
