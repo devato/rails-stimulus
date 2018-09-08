@@ -6,13 +6,14 @@ class Account::SettingsController < Account::BaseController
 
   def update
     @account_form = Account::SettingsForm.from_params(params)
-    if @account_form.valid?
-      redirect_to account_settings_path(script_name: false),
-        notice: 'Successfully saved account settings'
-    else
-      redirect_to account_settings_path(script_name: false),
-        alert: @account_form.errors.full_messages.first
+    User::SaveSettings.call(@account_form) do
+      on(:ok) do |user|
+        redirect_to account_settings_path(script_name: false),
+          alert: 'Successfully updated account settings'
+      end
+      on(:invalid) { render :edit }
     end
+
 
   rescue => e
     redirect_to account_settings_path(script_name: false),
