@@ -1,7 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  config.middleware.insert_before 0, Rack::LiveReload
   config.webpacker.check_yarn_integrity = true
   config.x.webpacker[:dev_server_host] = 'http://localhost:5000'
 
